@@ -1,0 +1,1025 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "title": "Fashion Data modell",
+  "description": "The GS1 Fashion Data Model",
+  "additionalProperties": true,
+  "required": [
+    "logistics",
+    "productHierarchy",
+    "productMetaData",
+    "productAttributes"
+  ],
+  "properties": {
+    "logistics": {
+      "$id": "#/properties/logistics",
+      "type": "object",
+      "description": "Groups attributes relevant to logistics",
+      "examples": [{
+        "importClassificationValue": "A2000SD",
+        "grossWeightInGram": 150.0,
+        "consumerFirstAvailabilityDateTime": "2020-01-25",
+        "measurements": {
+          "depthInMm": 2.0,
+          "widthInMm": 20.0,
+          "heightInMm": 25.0
+        },
+        "importClassificationTypeCode": "customTariffs",
+        "packagingInformation/packagingTypeCode": "box",
+        "isTradeItemADespatchUnit": true
+      }],
+      "additionalProperties": true,
+      "required": [
+        "isTradeItemADespatchUnit",
+        "importClassificationTypeCode",
+        "importClassificationValue"
+      ],
+      "properties": {
+        "isTradeItemADespatchUnit": {
+          "$id": "#/properties/logistics/properties/isTradeItemADespatchUnit",
+          "type": "boolean",
+          "description": "Identifies that the information provider considers the trade item as a despatch (shipping) unit. This may be relationship dependent based on channel of trade or other point to point agreement.",
+          "examples": [
+            true
+          ]
+        },
+        "importClassificationTypeCode": {
+          "$id": "#/properties/logistics/properties/importClassificationTypeCode",
+          "type": "string",
+          "maxLength": 50,
+          "description": "Imports and exports of trade items typically require classification codes to determine appropriate duties and tariffs. The complete list of possible values can be found in the documentation",
+          "examples": [
+            "customTariffs"
+          ]
+        },
+        "importClassificationValue": {
+          "$id": "#/properties/logistics/properties/importClassificationValue",
+          "type": "string",
+          "maxLength": 50,
+          "description": "Classification code to determine the appropriate duty or tariff for the import and export of the trade item.",
+          "examples": [
+            "A2000SD"
+          ]
+        },
+        "consumerFirstAvailabilityDateTime": {
+          "$id": "#/properties/logistics/properties/consumerFirstAvailabilityDateTime",
+          "type": "string",
+          "description": "The date from which on the item is available for consumers. Accepts the format JJJJ-MM-TT",
+          "format": "date-time",
+          "examples": [
+            "2018-11-13T20:20:39+00:00"
+          ]
+        },
+        "packagingType": {
+          "$id": "#/properties/logistics/properties/packagingInformation/packagingType",
+          "type": "string",
+          "description": "The dominant means used to transport, store, handle or display the trade item as defined by the data source. This packaging is not used to describe any manufacturing process.",
+          "examples": [
+            "box"
+          ]
+        },
+        "grossWeightInGram": {
+          "$id": "#/properties/logistics/properties/grossWeightInGram",
+          "type": "number",
+          "description": "Used to identify the gross weight of the trade item in grams. The gross weight includes all packaging materials of the trade item. At pallet level the trade item, grossWeight includes the weight of the pallet itself.",
+          "examples": [
+            150.0
+          ]
+        },
+        "measurements": {
+          "$id": "#/properties/logistics/properties/measurements",
+          "type": "object",
+          "description": "as measured according GDSN Package Measurement Rules. If the trade unit load, include the shipping platform unless according to the Platform Type Code chosen.",
+          "examples": [{
+            "depthInMm": 2.0,
+            "widthInMm": 20.0,
+            "heightInMm": 25.0
+          }],
+          "additionalProperties": true,
+          "required": [
+            "widthInMm",
+            "heightInMm",
+            "depthInMm"
+          ],
+          "properties": {
+            "widthInMm": {
+              "$id": "#/properties/logistics/properties/measurements/properties/widthInMm",
+              "type": "integer",
+              "description": "An explanation about the purpose of this instance.",
+              "examples": [
+                20.0
+              ]
+            },
+            "heightInMm": {
+              "$id": "#/properties/logistics/properties/measurements/properties/heightInMm",
+              "type": "integer",
+              "description": "An explanation about the purpose of this instance.",
+              "examples": [
+                25.0
+              ]
+            },
+            "depthInMm": {
+              "$id": "#/properties/logistics/properties/measurements/properties/depthInMm",
+              "type": "integer",
+              "description": "An explanation about the purpose of this instance.",
+              "examples": [
+                2.0
+              ]
+            }
+          }
+        }
+      }
+    },
+    "productMetaData": {
+      "$id": "#/properties/productMetaData",
+      "type": "object",
+      "description": "An explanation about the purpose of this instance.",
+      "examples": [{
+        "gtin": "4043874021975",
+        "isTradeItemAnOrderableUnit": true,
+        "effectiveDateTime": "2019-11-02T17:03:08.048Z",
+        "informationProviderGln": "4004757000005",
+        "brandOwnerGln": "4004757000005",
+        "targetMarketCountryCode": "de",
+        "startAvailabilityDateTime": "2019-11-02T17:03:08.048Z",
+        "globalModelNumber": "471323123",
+        "packagingMarkedLabelAccreditationCode": "OKOTEST",
+        "articleNumber": "210-9873232",
+        "manufacturerGLN": "4004757000005",
+        "endAvailabilityDateTime": "2019-11-02T17:03:08.048Z",
+        "suggestedRetailPrice": [{
+          "currency": "EUR",
+          "price": 14.99,
+          "country": "de"
+        }],
+        "isTradeItemAConsumerUnit": true,
+        "unitDescriptorCode": "baseUnitOrEach",
+        "isTradeItemBaseUnit": true
+      }],
+      "additionalProperties": true,
+      "required": [
+        "globalModelNumber",
+        "manufacturerGLN",
+        "brandOwnerGln",
+        "gtin",
+        "articleNumber",
+        "isTradeItemBaseUnit",
+        "unitDescriptorCode",
+        "packagingMarkedLabelAccreditationCode",
+        "informationProviderGln",
+        "targetMarketCountryCode",
+        "effectiveDateTime",
+        "startAvailabilityDateTime",
+        "endAvailabilityDateTime",
+        "isTradeItemAnOrderableUnit",
+        "suggestedRetailPrice",
+        "isTradeItemAConsumerUnit"
+      ],
+      "properties": {
+        "globalModelNumber": {
+          "$id": "#/properties/productMetaData/properties/globalModelNumber",
+          "type": "string",
+          "description": "An explanation about the purpose of this instance.",
+          "examples": [
+            "471323123"
+          ]
+        },
+        "manufacturerGLN": {
+          "$id": "#/properties/productMetaData/properties/manufacturerGLN",
+          "type": "string",
+          "description": "An explanation about the purpose of this instance.",
+          "examples": [
+            "4004757000005"
+          ]
+        },
+        "brandOwnerGln": {
+          "$id": "#/properties/productMetaData/properties/brandOwnerGln",
+          "type": "string",
+          "description": "An explanation about the purpose of this instance.",
+          "examples": [
+            "4004757000005"
+          ]
+        },
+        "gtin": {
+          "$id": "#/properties/productMetaData/properties/gtin",
+          "type": "string",
+          "description": "An explanation about the purpose of this instance.",
+          "examples": [
+            "4043874021975"
+          ]
+        },
+        "articleNumber": {
+          "$id": "#/properties/productMetaData/properties/articleNumber",
+          "type": "string",
+          "description": "An explanation about the purpose of this instance.",
+          "examples": [
+            "210-9873232"
+          ]
+        },
+        "isTradeItemBaseUnit": {
+          "$id": "#/properties/productMetaData/properties/isTradeItemBaseUnit",
+          "type": "boolean",
+          "description": "An explanation about the purpose of this instance.",
+          "examples": [
+            true
+          ]
+        },
+        "unitDescriptorCode": {
+          "$id": "#/properties/productMetaData/properties/unitDescriptorCode",
+          "type": "string",
+          "description": "An explanation about the purpose of this instance.",
+          "examples": [
+            "baseUnitOrEach"
+          ]
+        },
+        "packagingMarkedLabelAccreditationCode": {
+          "$id": "#/properties/productMetaData/properties/packagingMarkedLabelAccreditationCode",
+          "type": "string",
+          "description": "An explanation about the purpose of this instance.",
+          "examples": [
+            "OKOTEST"
+          ]
+        },
+        "informationProviderGln": {
+          "$id": "#/properties/productMetaData/properties/informationProviderGln",
+          "type": "string",
+          "description": "An explanation about the purpose of this instance.",
+          "examples": [
+            "4004757000005"
+          ]
+        },
+        "targetMarketCountryCode": {
+          "$id": "#/properties/productMetaData/properties/targetMarketCountryCode",
+          "type": "string",
+          "description": "An explanation about the purpose of this instance.",
+          "examples": [
+            "de"
+          ]
+        },
+        "effectiveDateTime": {
+          "$id": "#/properties/productMetaData/properties/effectiveDateTime",
+          "type": "string",
+          "format": "date-time",
+          "description": "An explanation about the purpose of this instance.",
+          "examples": [
+            "2019-11-02T17:03:08.048Z"
+          ]
+        },
+        "startAvailabilityDateTime": {
+          "$id": "#/properties/productMetaData/properties/startAvailabilityDateTime",
+          "type": "string",
+          "format": "date-time",
+          "description": "An explanation about the purpose of this instance.",
+          "examples": [
+            "2019-11-02T17:03:08.048Z"
+          ]
+        },
+        "endAvailabilityDateTime": {
+          "$id": "#/properties/productMetaData/properties/endAvailabilityDateTime",
+          "type": "string",
+          "format": "date-time",
+          "description": "An explanation about the purpose of this instance.",
+          "examples": [
+            "2019-11-02T17:03:08.048Z"
+          ]
+        },
+        "isTradeItemAnOrderableUnit": {
+          "$id": "#/properties/productMetaData/properties/isTradeItemAnOrderableUnit",
+          "type": "boolean",
+          "description": "An explanation about the purpose of this instance.",
+          "examples": [
+            true
+          ]
+        },
+        "suggestedRetailPrice": {
+          "$id": "#/properties/productMetaData/properties/suggestedRetailPrice",
+          "type": "array",
+          "description": "An explanation about the purpose of this instance.",
+          "examples": [
+            [{
+              "country": "de",
+              "currency": "EUR",
+              "price": 14.99
+            }]
+          ],
+          "additionalItems": true,
+          "items": {
+            "$id": "#/properties/productMetaData/properties/suggestedRetailPrice/items",
+            "type": "object",
+            "description": "An explanation about the purpose of this instance.",
+            "examples": [{
+              "currency": "EUR",
+              "price": 14.99,
+              "country": "de"
+            }],
+            "additionalProperties": true,
+            "required": [
+              "country",
+              "price",
+              "currency"
+            ],
+            "properties": {
+              "country": {
+                "$id": "#/properties/productMetaData/properties/suggestedRetailPrice/items/properties/country",
+                "type": "string",
+                "description": "An explanation about the purpose of this instance.",
+                "examples": [
+                  "de"
+                ]
+              },
+              "price": {
+                "$id": "#/properties/productMetaData/properties/suggestedRetailPrice/items/properties/price",
+                "type": "number",
+                "description": "An explanation about the purpose of this instance.",
+                "examples": [
+                  14.99
+                ]
+              },
+              "currency": {
+                "$id": "#/properties/productMetaData/properties/suggestedRetailPrice/items/properties/currency",
+                "type": "string",
+                "description": "An explanation about the purpose of this instance.",
+                "examples": [
+                  "EUR"
+                ]
+              }
+            }
+          }
+        },
+        "isTradeItemAConsumerUnit": {
+          "$id": "#/properties/productMetaData/properties/isTradeItemAConsumerUnit",
+          "type": "boolean",
+          "description": "An explanation about the purpose of this instance.",
+          "examples": [
+            true
+          ]
+        },
+        "quantityOfChildren": {
+          "$id": "#/properties/productHierarchy/properties/quantityOfChildren",
+          "type": "integer",
+          "description": "An explanation about the purpose of this instance.",
+          "examples": [
+            0.0
+          ]
+        },
+        "totalQuantityOfNextLowerLevelTradeItems": {
+          "$id": "#/properties/productHierarchy/properties/totalQuantityOfNextLowerLevelTradeItems",
+          "type": "integer",
+          "description": "An explanation about the purpose of this instance.",
+          "examples": [
+            0.0
+          ]
+        },
+        "childTradeItemGtin": {
+          "$id": "#/properties/productHierarchy/properties/childTradeItemGtin",
+          "type": "array",
+          "description": "An explanation about the purpose of this instance.",
+          "examples": [
+            []
+          ],
+          "additionalItems": true
+        },
+        "numberOfTheNextLowerArticleUnit": {
+          "$id": "#/properties/productHierarchy/properties/numberOfTheNextLowerArticleUnit",
+          "type": "null",
+          "description": "An explanation about the purpose of this instance.",
+          "examples": [
+            null
+          ]
+        }
+      }
+    },
+    "productAttributes": {
+      "$id": "#/properties/productAttributes",
+      "type": "object",
+      "description": "An explanation about the purpose of this instance.",
+      "examples": [{
+        "brandName": "Fashion Marke",
+        "additionalTradeItemDescription": [{
+          "language": "de",
+          "message": "Eine rote Tasche"
+        }],
+        "searchColour": [
+          "red",
+          "pink"
+        ],
+        "waterRepellent": true,
+        "files": [{
+          "uniformResourceIdentifier": "http://....",
+          "fileEffectiveStartDateTime": "2019-11-02T17:03:08.048Z",
+          "fileEffectiveEndDateTime": "2020-11-02T17:03:08.048Z",
+          "referencedFileType": "productImage"
+        }],
+        "careInstructions": {
+          "bleachingCharacteristics": "none",
+          "dryingCharacteristics": "lineDrying",
+          "ironingCharacteristics": "low",
+          "washingCharacteristics": "normal30",
+          "professionalCleaningCharacteristics": "noDry"
+        },
+        "descriptionShort": [{
+          "message": "Eine rote Tasche",
+          "language": "de"
+        }],
+        "material": [{
+          "composition": [{
+            "percentageShare": 100.0,
+            "typeOfMaterial": "cotton"
+          }],
+          "describedObject": "upperMaterial"
+        }],
+        "measurementInformationNetContent": 1.0,
+        "season": "springSummer",
+        "isNos": false,
+        "denier": "4",
+        "marketingMessage": [{
+          "message": "An absolute casual hit, the narrowly cut fabric skirt in jogging style.  The stretchy material composition of the short tubular skirt, made of 65% viscose, 30% nylon and 5% elastane, guarantees a great and comfortable fit. The partially elastic waistband with drawstring and cord as well as piped pockets on the seat and side pockets give the skirt an elegant, sporty appearance. The styling combinations are endless: whether with a simple blouse and heels or a casual sweater and sandals, the skirt transforms every outfit into a skilful eye-catcher.",
+          "language": "en"
+        }],
+        "colour": [{
+          "colourName": "sunset red",
+          "colourCode": "780"
+        }],
+        "countryOfOrigin": "de",
+        "size": [{
+          "mainSize": "72",
+          "subSize": "B",
+          "country": "de"
+        }],
+        "articleGroupingDesignation": "Herbst Winter Beige Collection",
+        "productClassificationCode": "121310",
+        "productClassificationValue": "bte"
+      }],
+      "additionalProperties": true,
+      "required": [
+        "productClassificationCode",
+        "productClassificationValue",
+        "marketingMessage",
+        "descriptionShort",
+        "articleGroupingDesignation",
+        "brandName",
+        "additionalTradeItemDescription",
+        "measurementInformationNetContent",
+        "waterRepellent",
+        "colour",
+        "searchColour",
+        "size",
+        "material",
+        "careInstructions",
+        "denier",
+        "season",
+        "files",
+        "countryOfOrigin"
+      ],
+      "properties": {
+        "productClassificationValue": {
+          "$id": "#/properties/productAttributes/properties/productClassificationValue",
+          "type": "string",
+          "description": "An explanation about the purpose of this instance.",
+          "examples": [
+            "121310"
+          ]
+        },
+        "productClassificationCode": {
+          "$id": "#/properties/productAttributes/properties/productClassificationCode",
+          "type": "string",
+          "description": "An explanation about the purpose of this instance.",
+          "examples": [
+            "bte"
+          ]
+        },
+        "marketingMessage": {
+          "$id": "#/properties/productAttributes/properties/marketingMessage",
+          "type": "array",
+          "description": "An explanation about the purpose of this instance.",
+          "examples": [
+            [{
+              "message": "Eine tolle Tasche",
+              "language": "de"
+            }]
+          ],
+          "additionalItems": true,
+          "items": {
+            "$id": "#/properties/productAttributes/properties/marketingMessage/items",
+            "type": "object",
+            "description": "An explanation about the purpose of this instance.",
+            "examples": [{
+              "message": "Eine tolle Tasche",
+              "language": "de"
+            }],
+            "additionalProperties": true,
+            "required": [
+              "language",
+              "message"
+            ],
+            "properties": {
+              "language": {
+                "$id": "#/properties/productAttributes/properties/marketingMessage/items/properties/language",
+                "type": "string",
+                "description": "An explanation about the purpose of this instance.",
+                "examples": [
+                  "de"
+                ]
+              },
+              "message": {
+                "$id": "#/properties/productAttributes/properties/marketingMessage/items/properties/message",
+                "type": "string",
+                "description": "An explanation about the purpose of this instance.",
+                "examples": [
+                  "Eine tolle Tasche"
+                ]
+              }
+            }
+          }
+        },
+        "descriptionShort": {
+          "$id": "#/properties/productAttributes/properties/descriptionShort",
+          "type": "array",
+          "description": "An explanation about the purpose of this instance.",
+          "examples": [
+            [{
+              "language": "de",
+              "message": "Eine rote Tasche"
+            }]
+          ],
+          "additionalItems": true,
+          "items": {
+            "$id": "#/properties/productAttributes/properties/descriptionShort/items",
+            "type": "object",
+            "description": "An explanation about the purpose of this instance.",
+            "examples": [{
+              "message": "An absolute casual hit, the narrowly cut fabric skirt in jogging style.",
+              "language": "en"
+            }],
+            "additionalProperties": true,
+            "required": [
+              "language",
+              "message"
+            ],
+            "properties": {
+              "language": {
+                "$id": "#/properties/productAttributes/properties/descriptionShort/items/properties/language",
+                "type": "string",
+                "description": "An explanation about the purpose of this instance.",
+                "examples": [
+                  "de"
+                ]
+              },
+              "message": {
+                "$id": "#/properties/productAttributes/properties/descriptionShort/items/properties/message",
+                "type": "string",
+                "description": "An explanation about the purpose of this instance.",
+                "examples": [
+                  "Eine rote Tasche"
+                ]
+              }
+            }
+          }
+        },
+        "articleGroupingDesignation": {
+          "$id": "#/properties/productAttributes/properties/articleGroupingDesignation",
+          "type": "string",
+          "description": "An explanation about the purpose of this instance.",
+          "examples": [
+            "Herbst Winter Beige Collection"
+          ]
+        },
+        "brandName": {
+          "$id": "#/properties/productAttributes/properties/brandName",
+          "type": "string",
+          "description": "An explanation about the purpose of this instance.",
+          "examples": [
+            "Fashion Marke"
+          ]
+        },
+        "additionalTradeItemDescription": {
+          "$id": "#/properties/productAttributes/properties/additionalTradeItemDescription",
+          "type": "array",
+          "description": "An explanation about the purpose of this instance.",
+          "examples": [
+            [{
+              "message": "Skirt in jogging style",
+              "language": "en"
+            }]
+          ],
+          "additionalItems": true,
+          "items": {
+            "$id": "#/properties/productAttributes/properties/additionalTradeItemDescription/items",
+            "type": "object",
+            "description": "An explanation about the purpose of this instance.",
+            "examples": [{
+              "language": "en",
+              "message": "Skirt in jogging style"
+            }],
+            "additionalProperties": true,
+            "required": [
+              "language",
+              "message"
+            ],
+            "properties": {
+              "language": {
+                "$id": "#/properties/productAttributes/properties/additionalTradeItemDescription/items/properties/language",
+                "type": "string",
+                "description": "An explanation about the purpose of this instance.",
+                "examples": [
+                  "en"
+                ]
+              },
+              "message": {
+                "$id": "#/properties/productAttributes/properties/additionalTradeItemDescription/items/properties/message",
+                "type": "string",
+                "description": "An explanation about the purpose of this instance.",
+                "examples": [
+                  "Skirt in jogging style"
+                ]
+              }
+            }
+          }
+        },
+        "measurementInformationNetContent": {
+          "$id": "#/properties/productAttributes/properties/measurementInformationNetContent",
+          "type": "integer",
+          "description": "An explanation about the purpose of this instance.",
+          "examples": [
+            1.0
+          ]
+        },
+        "waterRepellent": {
+          "$id": "#/properties/productAttributes/properties/waterRepellent",
+          "type": "boolean",
+          "description": "An explanation about the purpose of this instance.",
+          "examples": [
+            true
+          ]
+        },
+        "colour": {
+          "$id": "#/properties/productAttributes/properties/colour",
+          "type": "array",
+          "description": "An explanation about the purpose of this instance.",
+          "examples": [
+            [{
+              "colourName": "sunset red",
+              "colourCode": "780"
+            }]
+          ],
+          "additionalItems": true,
+          "items": {
+            "$id": "#/properties/productAttributes/properties/colour/items",
+            "type": "object",
+            "description": "An explanation about the purpose of this instance.",
+            "examples": [{
+              "colourName": "sunset red",
+              "colourCode": "780"
+            }],
+            "additionalProperties": true,
+            "required": [
+              "colourCode",
+              "colourName"
+            ],
+            "properties": {
+              "colourCode": {
+                "$id": "#/properties/productAttributes/properties/colour/items/properties/colourCode",
+                "type": "string",
+                "description": "An explanation about the purpose of this instance.",
+                "examples": [
+                  "780"
+                ]
+              },
+              "colourName": {
+                "$id": "#/properties/productAttributes/properties/colour/items/properties/colourName",
+                "type": "string",
+                "description": "An explanation about the purpose of this instance.",
+                "examples": [
+                  "sunset red"
+                ]
+              }
+            }
+          }
+        },
+        "searchColour": {
+          "$id": "#/properties/productAttributes/properties/searchColour",
+          "type": "array",
+          "description": "An explanation about the purpose of this instance.",
+          "examples": [
+            [
+              "red",
+              "pink"
+            ]
+          ],
+          "additionalItems": true,
+          "items": {
+            "$id": "#/properties/productAttributes/properties/searchColour/items",
+            "type": "string",
+            "description": "An explanation about the purpose of this instance.",
+            "examples": [
+              "red",
+              "pink"
+            ]
+          }
+        },
+        "size": {
+          "$id": "#/properties/productAttributes/properties/size",
+          "type": "array",
+          "description": "An explanation about the purpose of this instance.",
+          "examples": [
+            [{
+              "mainSize": "72",
+              "subSize": "B",
+              "country": "de"
+            }]
+          ],
+          "additionalItems": true,
+          "items": {
+            "$id": "#/properties/productAttributes/properties/size/items",
+            "type": "object",
+            "description": "An explanation about the purpose of this instance.",
+            "examples": [{
+              "mainSize": "72",
+              "subSize": "B",
+              "country": "de"
+            }],
+            "additionalProperties": true,
+            "required": [
+              "country",
+              "mainSize",
+              "subSize"
+            ],
+            "properties": {
+              "country": {
+                "$id": "#/properties/productAttributes/properties/size/items/properties/country",
+                "type": "string",
+                "description": "An explanation about the purpose of this instance.",
+                "examples": [
+                  "de"
+                ]
+              },
+              "mainSize": {
+                "$id": "#/properties/productAttributes/properties/size/items/properties/mainSize",
+                "type": "string",
+                "description": "An explanation about the purpose of this instance.",
+                "examples": [
+                  "72"
+                ]
+              },
+              "subSize": {
+                "$id": "#/properties/productAttributes/properties/size/items/properties/subSize",
+                "type": "string",
+                "description": "An explanation about the purpose of this instance.",
+                "examples": [
+                  "B"
+                ]
+              }
+            }
+          }
+        },
+        "material": {
+          "$id": "#/properties/productAttributes/properties/material",
+          "type": "array",
+          "description": "An explanation about the purpose of this instance.",
+          "examples": [
+            [{
+              "composition": [{
+                "percentageShare": 100.0,
+                "typeOfMaterial": "cotton"
+              }],
+              "describedObject": "upperMaterial"
+            }]
+          ],
+          "additionalItems": true,
+          "items": {
+            "$id": "#/properties/productAttributes/properties/material/items",
+            "type": "object",
+            "description": "An explanation about the purpose of this instance.",
+            "examples": [{
+              "describedObject": "upperMaterial",
+              "composition": [{
+                "percentageShare": 100.0,
+                "typeOfMaterial": "cotton"
+              }]
+            }],
+            "additionalProperties": true,
+            "required": [
+              "describedObject",
+              "composition"
+            ],
+            "properties": {
+              "describedObject": {
+                "$id": "#/properties/productAttributes/properties/material/items/properties/describedObject",
+                "type": "string",
+                "description": "An explanation about the purpose of this instance.",
+                "examples": [
+                  "upperMaterial"
+                ]
+              },
+              "composition": {
+                "$id": "#/properties/productAttributes/properties/material/items/properties/composition",
+                "type": "array",
+                "description": "An explanation about the purpose of this instance.",
+                "examples": [
+                  [{
+                    "typeOfMaterial": "cotton",
+                    "percentageShare": 100.0
+                  }]
+                ],
+                "additionalItems": true,
+                "items": {
+                  "$id": "#/properties/productAttributes/properties/material/items/properties/composition/items",
+                  "type": "object",
+                  "description": "An explanation about the purpose of this instance.",
+                  "examples": [{
+                    "percentageShare": 100.0,
+                    "typeOfMaterial": "cotton"
+                  }],
+                  "additionalProperties": true,
+                  "required": [
+                    "typeOfMaterial",
+                    "percentageShare"
+                  ],
+                  "properties": {
+                    "typeOfMaterial": {
+                      "$id": "#/properties/productAttributes/properties/material/items/properties/composition/items/properties/typeOfMaterial",
+                      "type": "string",
+                      "description": "An explanation about the purpose of this instance.",
+                      "examples": [
+                        "cotton"
+                      ]
+                    },
+                    "percentageShare": {
+                      "$id": "#/properties/productAttributes/properties/material/items/properties/composition/items/properties/percentageShare",
+                      "type": "integer",
+                      "description": "An explanation about the purpose of this instance.",
+                      "examples": [
+                        100.0
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "careInstructions": {
+          "$id": "#/properties/productAttributes/properties/careInstructions",
+          "type": "object",
+          "description": "An explanation about the purpose of this instance.",
+          "examples": [{
+            "ironingCharacteristics": "low",
+            "washingCharacteristics": "normal30",
+            "professionalCleaningCharacteristics": "noDry",
+            "bleachingCharacteristics": "none",
+            "dryingCharacteristics": "lineDrying"
+          }],
+          "additionalProperties": true,
+          "required": [
+            "washingCharacteristics",
+            "dryingCharacteristics",
+            "bleachingCharacteristics",
+            "ironingCharacteristics",
+            "professionalCleaningCharacteristics"
+          ],
+          "properties": {
+            "washingCharacteristics": {
+              "$id": "#/properties/productAttributes/properties/careInstructions/properties/washingCharacteristics",
+              "type": "string",
+              "description": "An explanation about the purpose of this instance.",
+              "examples": [
+                "normal30"
+              ]
+            },
+            "dryingCharacteristics": {
+              "$id": "#/properties/productAttributes/properties/careInstructions/properties/dryingCharacteristics",
+              "type": "string",
+              "description": "An explanation about the purpose of this instance.",
+              "examples": [
+                "lineDrying"
+              ]
+            },
+            "bleachingCharacteristics": {
+              "$id": "#/properties/productAttributes/properties/careInstructions/properties/bleachingCharacteristics",
+              "type": "string",
+              "description": "An explanation about the purpose of this instance.",
+              "examples": [
+                "none"
+              ]
+            },
+            "ironingCharacteristics": {
+              "$id": "#/properties/productAttributes/properties/careInstructions/properties/ironingCharacteristics",
+              "type": "string",
+              "description": "An explanation about the purpose of this instance.",
+              "examples": [
+                "low"
+              ]
+            },
+            "professionalCleaningCharacteristics": {
+              "$id": "#/properties/productAttributes/properties/careInstructions/properties/professionalCleaningCharacteristics",
+              "type": "string",
+              "description": "An explanation about the purpose of this instance.",
+              "examples": [
+                "noDry"
+              ]
+            }
+          }
+        },
+        "denier": {
+          "$id": "#/properties/productAttributes/properties/denier",
+          "type": "string",
+          "description": "An explanation about the purpose of this instance.",
+          "examples": [
+            "4"
+          ]
+        },
+        "season": {
+          "$id": "#/properties/productAttributes/properties/season",
+          "type": "string",
+          "description": "An explanation about the purpose of this instance.",
+          "examples": [
+            "springSummer"
+          ]
+        },
+        "isNos": {
+          "$id": "#/properties/productAttributes/properties/isNos",
+          "type": "boolean",
+          "description": "An explanation about the purpose of this instance.",
+          "examples": [
+            true
+          ]
+        },
+        "files": {
+          "$id": "#/properties/productAttributes/properties/files",
+          "type": "array",
+          "description": "An explanation about the purpose of this instance.",
+          "examples": [
+            [{
+              "uniformResourceIdentifier": "http://....",
+              "fileEffectiveStartDateTime": "2019-11-02T17:03:08.048Z",
+              "fileEffectiveEndDateTime": "2020-11-02T17:03:08.048Z",
+              "referencedFileType": "productImage"
+            }]
+          ],
+          "additionalItems": true,
+          "items": {
+            "$id": "#/properties/productAttributes/properties/files/items",
+            "type": "object",
+            "description": "An explanation about the purpose of this instance.",
+            "examples": [{
+              "fileEffectiveEndDateTime": "2020-11-02T17:03:08.048Z",
+              "referencedFileType": "productImage",
+              "uniformResourceIdentifier": "http://....",
+              "fileEffectiveStartDateTime": "2019-11-02T17:03:08.048Z"
+            }],
+            "additionalProperties": true,
+            "required": [
+              "referencedFileType",
+              "uniformResourceIdentifier",
+              "fileEffectiveStartDateTime",
+              "fileEffectiveEndDateTime"
+            ],
+            "properties": {
+              "referencedFileType": {
+                "$id": "#/properties/productAttributes/properties/files/items/properties/referencedFileType",
+                "type": "string",
+                "description": "An explanation about the purpose of this instance.",
+                "examples": [
+                  "productImage"
+                ]
+              },
+              "uniformResourceIdentifier": {
+                "$id": "#/properties/productAttributes/properties/files/items/properties/uniformResourceIdentifier",
+                "type": "string",
+                "description": "An explanation about the purpose of this instance.",
+                "examples": [
+                  "http://...."
+                ]
+              },
+              "fileEffectiveStartDateTime": {
+                "$id": "#/properties/productAttributes/properties/files/items/properties/fileEffectiveStartDateTime",
+                "type": "string",
+                "description": "An explanation about the purpose of this instance.",
+                "examples": [
+                  "2019-11-02T17:03:08.048Z"
+                ]
+              },
+              "fileEffectiveEndDateTime": {
+                "$id": "#/properties/productAttributes/properties/files/items/properties/fileEffectiveEndDateTime",
+                "type": "string",
+                "description": "An explanation about the purpose of this instance.",
+                "examples": [
+                  "2020-11-02T17:03:08.048Z"
+                ]
+              }
+            }
+          }
+        },
+        "countryOfOrigin": {
+          "$id": "#/properties/productAttributes/properties/countryOfOrigin",
+          "type": "string",
+          "description": "An explanation about the purpose of this instance.",
+          "examples": [
+            "de"
+          ]
+        }
+      }
+    }
+  }
+}
