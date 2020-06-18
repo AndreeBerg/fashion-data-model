@@ -1,1186 +1,1165 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema",
-  "$id": "http://example.com/example.json",
-  "type": "object",
-  "title": "Fashion Data modell",
-  "description": "The GS1 Fashion Data Model",
-  "additionalProperties": false,
-  "required": ["logistics", "productMetaData", "productAttributes"],
-  "properties": {
-    "logistics": {
-      "$id": "#/properties/logistics",
-      "type": "object",
-      "description": "Groups attributes relevant to logistics",
-      "examples": [
-        {
-          "importClassificationValue": "40082110",
-          "grossWeightInGram": 150.0,
-          "consumerFirstAvailabilityDateTime": "2020-11-02T17:03:08.048Z",
-          "measurements": {
-            "depthInMm": 2.0,
-            "widthInMm": 20.0,
-            "heightInMm": 25.0
-          },
-          "importClassificationSystem": "customTariffs",
-          "packagingInformation/packagingTypeCode": "box",
-          "isTradeItemADespatchUnit": true
-        }
-      ],
-      "additionalProperties": false,
-      "required": [
-        "isTradeItemADespatchUnit",
-        "importClassificationSystem",
-        "importClassificationValue"
-      ],
-      "properties": {
-        "isTradeItemADespatchUnit": {
-          "$id": "#/properties/logistics/properties/isTradeItemADespatchUnit",
-          "type": "boolean",
-          "description": "Identifies that the information provider considers the trade item as a despatch (shipping) unit. This may be relationship dependent based on channel of trade or other point to point agreement.",
-          "examples": [true]
-        },
-        "importClassificationSystem": {
-          "$id": "#/properties/logistics/properties/importClassificationSystem",
-          "enum": ["customsTariffNumber", "intrastat", "tarifIntegreDeLaCommunaute"],
-          "maxLength": 120,
-          "description": "Imports and exports of trade items typically require classification codes to determine appropriate duties and tariffs. Values include Netherlands Import Code, Harmonized Commodity Description and Coding System, Customs Tariff and INTRASTAT Code, Harmonized Tariff Schedule of the United States, INTRASTAT Combined Nomenclature, Tarif Intégré de la Communauté.st of possible values can be found in the documentation",
-          "examples": ["customsTariffNumber"]
-        },
-        "importClassificationValue": {
-          "$id": "#/properties/logistics/properties/importClassificationValue",
-          "type": "string",
-          "maxLength": 80,
-          "description": "Classification code to determine the appropriate duty or tariff for the import and export of the trade item.",
-          "examples": ["A2000SD"]
-        },
-        "consumerFirstAvailabilityDateTime": {
-          "$id": "#/properties/logistics/properties/consumerFirstAvailabilityDateTime",
-          "type": "string",
-          "description": "The first date/time that the buyer is allowed to sell the trade item to consumers. Accepts the format JJJJ-MM-TT",
-          "format": "date-time",
-          "examples": ["2018-11-13"]
-        },
-        "packagingType": {
-          "$id": "#/properties/logistics/properties/packagingInformation/packagingType",
-          "enum": ["box", "crate", "carton", "polyBag", "hanger", "other"],
-          "description": "The dominant means used to transport, store, handle or display the trade item as defined by the data source. This packaging is not used to describe any manufacturing process.",
-          "examples": ["box"]
-        },
-        "grossWeightInGram": {
-          "$id": "#/properties/logistics/properties/grossWeightInGram",
-          "type": "number",
-          "maxLength": 15,
-          "description": "Used to identify the gross weight of the trade item in grams. The gross weight includes all packaging materials of the trade item. At pallet level the trade item, grossWeight includes the weight of the pallet itself.",
-          "examples": [150.0]
-        },
-        "measurements": {
-          "$id": "#/properties/logistics/properties/measurements",
-          "type": "object",
-          "description": "as measured according GDSN Package Measurement Rules. If the trade unit load, include the shipping platform unless according to the Platform Type Code chosen.",
-          "examples": [
-            {
-              "depthInMm": 2.0,
-              "widthInMm": 20.0,
-              "heightInMm": 25.0
-            }
-          ],
-          "additionalProperties": false,
-          "required": ["widthInMm", "heightInMm", "depthInMm"],
-          "properties": {
-            "widthInMm": {
-              "$id": "#/properties/logistics/properties/measurements/properties/widthInMm",
-              "type": "integer",
-              "maxLength": 15,
-              "description": "The width of the trade item, as measured according GDSN Package Measurement Rules. If the trade unit load, include the shipping platform unless according to the Platform Type Code chosen.",
-              "examples": [20.0]
-            },
-            "heightInMm": {
-              "$id": "#/properties/logistics/properties/measurements/properties/heightInMm",
-              "type": "integer",
-              "maxLength": 15,
-              "description": "The height of the trade item, as measured according GDSN Package Measurement Rules. If the trade unit load, include the shipping platform unless according to the Platform Type Code chosen..",
-              "examples": [25.0]
-            },
-            "depthInMm": {
-              "$id": "#/properties/logistics/properties/measurements/properties/depthInMm",
-              "type": "integer",
-              "maxLength": 15,
-              "description": "The depth of the trade item, as measured according GDSN Package Measurement Rules. If the trade unit load, include the shipping platform unless according to the Platform Type Code chosen.",
-              "examples": [2.0]
-            }
-          }
-        }
-      }
-    },
-    "productMetaData": {
-      "$id": "#/properties/productMetaData",
-      "type": "object",
-      "examples": [
-        {
-          "gtin": "4043874021975",
-          "isTradeItemAnOrderableUnit": true,
-          "effectiveDateTime": "2019-11-02T17:03:08.048Z",
-          "informationProviderGln": "4004757000005",
-          "brandOwnerGln": "4004757000005",
-          "targetMarketCountryCode": "de",
-          "startAvailabilityDateTime": "2019-11-02T17:03:08.048Z",
-          "globalModelNumber": "471323123",
-          "packagingMarkedLabelAccreditationCode": "OKOTEST",
-          "articleNumber": "210-9873232",
-          "manufacturerGLN": "4004757000005",
-          "endAvailabilityDateTime": "2019-11-02T17:03:08.048Z",
-          "suggestedRetailPrice": [
-            {
-              "currency": "EUR",
-              "price": 14.99,
-              "country": "de"
-            }
-          ],
-          "isTradeItemAConsumerUnit": true,
-          "unitDescriptorCode": "baseUnitOrEach",
-          "isTradeItemBaseUnit": true
-        }
-      ],
-      "additionalProperties": false,
-      "required": [
-        "manufacturerGLN",
-        "brandOwnerGln",
-        "gtin",
-        "articleNumber",
-        "informationProviderGln",
-        "effectiveDateTime",
-        "startAvailabilityDateTime",
-        "endAvailabilityDateTime"
-      ],
-      "properties": {
-        "globalModelNumber": {
-          "$id": "#/properties/productMetaData/properties/globalModelNumber",
-          "type": "string",
-          "description": "As well as article identification, articles are summarized using the Global Model Number (GMN).",
-          "maxLength": 30,
-          "examples": ["471323123"]
-        },
-        "manufacturerGLN": {
-          "$id": "#/properties/productMetaData/properties/manufacturerGLN",
-          "type": "string",
-          "description": "AParty name and identification information for the manufacturer of the trade item.",
-          "maxLength": 13,
-          "examples": ["4004757000005"]
-        },
-        "brandOwnerGln": {
-          "$id": "#/properties/productMetaData/properties/brandOwnerGln",
-          "type": "string",
-          "description": "The Global Location Number (GLN) is a structured Identification of a physical location, legal or functional entity within an enterprise. The GLN is the primary party identifier. Each party identified in the trading relationship must have a primary party Identification.",
-          "maxLength": 13,
-          "examples": ["4004757000005"]
-        },
-        "gtin": {
-          "$id": "#/properties/productMetaData/properties/gtin",
-          "type": "string",
-          "description": "The Global Trade Item Number (GTIN) is the GS1 key used to uniquely identify a trade item (also for re- or transport packagings). A trade item is any item (product or service) upon which there is a need to retrieve pre-defined information, and that may be planned, priced, ordered, delivered and/or invoiced at any point in any supply chain.",
-          "maxLength": 14,
-          "examples": ["4043874021975"]
-        },
-        "articleNumber": {
-          "$id": "#/properties/productMetaData/properties/articleNumber",
-          "type": "string",
-          "description": "The manufacturer's internal article number. Usually on model level including a color identifier",
-          "maxLength": 50,
-          "examples": ["210-9873232"]
-        },
-        "isTradeItemBaseUnit": {
-          "$id": "#/properties/productMetaData/properties/isTradeItemBaseUnit",
-          "type": "boolean",
-          "description": "Indicator identifying the item as the base unit level of the trade item hierarchy.",
-          "examples": [true]
-        },
-        "unitDescriptorCode": {
-          "$id": "#/properties/productMetaData/properties/unitDescriptorCode",
-          "enum": [
-            "baseUnitOrEach",
-            "case",
-            "displayShipper",
-            "mixedModule",
-            "packOrInnerPack",
-            "pallet",
-            "transportLoad"
-          ],
-          "description": "Describes the hierarchical level of the trade item. TradeItemUnitIndicator is mandatory. Examples: `CASE`, ”PALLET”",
-          "examples": ["baseUnitOrEach"]
-        },
-        "packagingMarkedLabelAccreditationCode": {
-          "$id": "#/properties/productMetaData/properties/packagingMarkedLabelAccreditationCode",
-          "type": "string",
-          "maxLength": 120,
-          "description": "A marking that the trade item received recognition, endorsement, certification by following guidelines by the label issuing agency. This does not represent claims for regulatory purposes on products such as free from markings.",
-          "examples": ["OKOTEST"]
-        },
-        "informationProviderGln": {
-          "$id": "#/properties/productMetaData/properties/informationProviderGln",
-          "type": "string",
-          "description": "GLN of the information provider, under which the base unit and all of its packaging items are deposited ",
-          "maxLength": 13,
-          "examples": ["4004757000005"]
-        },
-        "targetMarketCountryCode": {
-          "$id": "#/properties/productMetaData/properties/targetMarketCountryCode",
-          "type": "string",
-          "description": "Target market (country) assigned to the trade item (and all of its packaging items). The target market is where the trade item is intended to be sold. Different target markets have different demands regarding the item master data profile.Code: ISO-3166 Alpha-2.",
-          "examples": ["de"]
-        },
-        "effectiveDateTime": {
-          "$id": "#/properties/productMetaData/properties/effectiveDateTime",
-          "type": "string",
-          "format": "date-time",
-          "description": "The date on which the information contents of the master data version are valid. This effective date can be used for initial trade item offering, or to mark a change in the information related to an existing trade item. In the last case, it would mark when these changes take effect.",
-          "examples": ["2019-11-02"]
-        },
-        "startAvailabilityDateTime": {
-          "$id": "#/properties/productMetaData/properties/startAvailabilityDateTime",
-          "type": "string",
-          "format": "date-time",
-          "description": "The date (CCYY-MM-DDTHH:MM:SS) from which the trade item becomes available from the supplier, including seasonal or temporary trade item and services.",
-          "examples": ["2019-11-02"]
-        },
-        "endAvailabilityDateTime": {
-          "$id": "#/properties/productMetaData/properties/endAvailabilityDateTime",
-          "type": "string",
-          "format": "date-time",
-          "description": "The date from which the trade item is no longer available from the information provider, including seasonal or temporary trade item and services.",
-          "examples": ["2019-11-02"]
-        },
-        "isTradeItemAnOrderableUnit": {
-          "$id": "#/properties/productMetaData/properties/isTradeItemAnOrderableUnit",
-          "type": "boolean",
-          "description": "An indicator identifying that the information provider considers this trade item to be at a hierarchy level where they will accept orders from customers. This may be different from what the information provider identifies as a despatch unit. This may be a relationship dependent based on channel of trade or other point to point agreement.",
-          "examples": [true]
-        },
-        "suggestedRetailPrice": {
-          "$id": "#/properties/productMetaData/properties/suggestedRetailPrice",
-          "type": "array",
-          "description": "The retail (to consumer) price as suggested by the manufacturer. This is normally used to establish a proposed value for the trade item for marketing purposes. May or may not appear on the package.",
-          "examples": [
-            [
-              {
-                "country": "de",
-                "currency": "EUR",
-                "price": 14.99
-              }
-            ]
-          ],
-          "additionalItems": true,
-          "items": {
-            "$id": "#/properties/productMetaData/properties/suggestedRetailPrice/items",
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://example.com/example.json",
+    "type": "object",
+    "title": "Fashion Data modell",
+    "description": "The GS1 Fashion Data Model",
+    "additionalProperties": false,
+    "required": ["logistics", "productMetaData", "productAttributes"],
+    "properties": {
+        "logistics": {
+            "$id": "#/properties/logistics",
             "type": "object",
+            "description": "Groups attributes relevant to logistics",
             "examples": [
-              {
-                "currency": "EUR",
-                "price": 14.99,
-                "country": "de"
-              }
-            ],
-            "additionalProperties": false,
-            "required": ["country", "price", "currency"],
-            "properties": {
-              "country": {
-                "$id": "#/properties/productMetaData/properties/suggestedRetailPrice/items/properties/country",
-                "type": "string",
-                "examples": ["de"]
-              },
-              "price": {
-                "$id": "#/properties/productMetaData/properties/suggestedRetailPrice/items/properties/price",
-                "type": "number",
-                "examples": [14.99]
-              },
-              "currency": {
-                "$id": "#/properties/productMetaData/properties/suggestedRetailPrice/items/properties/currency",
-                "type": "string",
-                "examples": ["EUR"]
-              }
-            }
-          }
-        },
-        "isTradeItemAConsumerUnit": {
-          "$id": "#/properties/productMetaData/properties/isTradeItemAConsumerUnit",
-          "type": "boolean",
-          "description": "An explanation about the purpose of this instance.Identifies whether the trade item to be taken possession of ,or to be consumed or used by an end user or both, as determined by the manufacturer. The end user could be, but is not limited to, a consumer as in items sold at retail, or a patient/clinician/technician in a healthcare setting, or an operator for foodservice such as restaurants, airlines, cafeterias, etc.",
-          "examples": [true]
-        },
-        "quantityOfChildren": {
-          "$id": "#/properties/productMetaData/properties/quantityOfChildren",
-          "type": "integer",
-          "description": "Indicates the number of unique next lower level trade items contained in a complex trade item. A complex trade item can contain at least two different GTINs.",
-          "maxLength": 10,
-          "examples": [10]
-        },
-        "totalQuantityOfNextLowerLevelTradeItems": {
-          "$id": "#/properties/productMetaData/properties/totalQuantityOfNextLowerLevelTradeItems",
-          "type": "integer",
-          "description": "This represents the total quantity of next lower level trade items that this trade item (packaging item) contains. It is derived by summing the `Quantity of next lower trade item` of all Child trade item GTINs contained in the trade item.",
-          "maxLength": 6,
-          "examples": [0.0]
-        },
-        "childTradeItemGtin": {
-          "$id": "#/properties/productMetaData/properties/childTradeItemGtin",
-          "type": "array",
-          "description": "Identifies the GTIN of the next lower level trade item that the parent trade item contains.",
-          "maxLength": 14,
-          "examples": [[]],
-          "additionalItems": true
-        },
-        "numberOfTheNextLowerArticleUnit": {
-          "$id": "#/properties/productMetaData/properties/numberOfTheNextLowerArticleUnit",
-          "type": "null",
-          "description": "The quantity or number of a next lower level trade item (GTIN) that the parent trade item (packaging item) contains.",
-          "maxLength": 6,
-          "examples": [10]
-        }
-      }
-    },
-    "productAttributes": {
-      "$id": "#/properties/productAttributes",
-      "type": "object",
-      "examples": [
-        {
-          "brandName": "Fashion Marke",
-          "additionalTradeItemDescription": [
-            {
-              "language": "de",
-              "message": "Eine rote Tasche"
-            }
-          ],
-          "searchColour": ["red", "pink"],
-          "waterRepellent": true,
-          "files": [
-            {
-              "uniformResourceIdentifier": "http://....",
-              "fileEffectiveStartDateTime": "2019-11-02T17:03:08.048Z",
-              "fileEffectiveEndDateTime": "2020-11-02T17:03:08.048Z",
-              "referencedFileType": "productImage"
-            }
-          ],
-          "careInstructions": {
-            "bleachingCharacteristics": "none",
-            "dryingCharacteristics": "lineDrying",
-            "ironingCharacteristics": "low",
-            "washingCharacteristics": "normal30",
-            "professionalCleaningCharacteristics": "noDry"
-          },
-          "descriptionShort": [
-            {
-              "message": "Eine rote Tasche",
-              "language": "de"
-            }
-          ],
-          "material": [
-            {
-              "composition": [
                 {
-                  "percentageShare": 100.0,
-                  "typeOfMaterial": "cotton"
-                }
-              ],
-              "describedObject": "lining"
-            }
-          ],
-          "measurementInformationNetContent": 1.0,
-          "season": "springSummer",
-          "enum": [
-            "allYear",
-            "autumn",
-            "autumnWinter",
-            "spring",
-            "springSummer",
-            "summer",
-            "winter",
-            "other"
-          ],
-          "isNos": false,
-          "marketingMessage": [
-            {
-              "message": "An absolute casual hit, the narrowly cut fabric skirt in jogging style. The stretchy material composition of the short tubular skirt, made of 65% viscose, 30% nylon and 5% elastane, guarantees a great and comfortable fit. The partially elastic waistband with drawstring and cord as well as piped pockets on the seat and side pockets give the skirt an elegant, sporty appearance. The styling combinations are endless: whether with a simple blouse and heels or a casual sweater and sandals, the skirt transforms every outfit into a skilful eye-catcher.",
-              "language": "en"
-            }
-          ],
-          "colour": [
-            {
-              "colourCode": "780",
-              "colourName": [
-                {
-                  "language": "en",
-                  "name": "sunset red"
-                }
-              ]
-            }
-          ],
-          "countryOfOrigin": "de",
-          "size": [
-            {
-              "mainSize": "72",
-              "subSize": "B",
-              "country": "de"
-            }
-          ],
-          "articleGroupingDesignation": "Herbst Winter Beige Collection",
-          "productClassificationValue": "121310",
-          "productClassificationSystem": "bte"
-        }
-      ],
-      "additionalProperties": false,
-      "required": ["brandName", "colour", "material"],
-      "properties": {
-        "productClassificationValue": {
-          "$id": "#/properties/productAttributes/properties/productClassificationValue",
-          "type": "string",
-          "examples": ["121310"]
-        },
-        "productClassificationSystem": {
-          "$id": "#/properties/productAttributes/properties/productClassificationSystem",
-          "type": "string",
-          "examples": ["bte"]
-        },
-        "marketingMessage": {
-          "$id": "#/properties/productAttributes/properties/marketingMessage",
-          "type": "array",
-          "maxLength": 4000,
-          "description": "Marketing message associated to the Trade item.",
-          "examples": [
-            [
-              {
-                "message": "Eine tolle Tasche",
-                "language": "de"
-              }
-            ]
-          ],
-          "additionalItems": true,
-          "items": {
-            "$id": "#/properties/productAttributes/properties/marketingMessage/items",
-            "type": "object",
-            "examples": [
-              {
-                "message": "Eine tolle Tasche",
-                "language": "de"
-              }
-            ],
-            "additionalProperties": false,
-            "required": ["language", "message"],
-            "properties": {
-              "language": {
-                "$id": "#/properties/productAttributes/properties/marketingMessage/items/properties/language",
-                "type": "string",
-                "examples": ["de"]
-              },
-              "message": {
-                "$id": "#/properties/productAttributes/properties/marketingMessage/items/properties/message",
-                "type": "string",
-                "examples": ["Eine tolle Tasche"]
-              }
-            }
-          }
-        },
-        "descriptionShort": {
-          "$id": "#/properties/productAttributes/properties/descriptionShort",
-          "type": "array",
-          "description": "A free form short length description of the trade item that can be used to identify the trade item at point of sale.",
-          "examples": [
-            [
-              {
-                "language": "de",
-                "message": "Eine rote Tasche"
-              }
-            ]
-          ],
-          "additionalItems": true,
-          "items": {
-            "$id": "#/properties/productAttributes/properties/descriptionShort/items",
-            "type": "object",
-            "examples": [
-              {
-                "message": "An absolute casual hit, the narrowly cut fabric skirt in jogging style.",
-                "language": "en"
-              }
-            ],
-            "additionalProperties": false,
-            "required": ["language", "message"],
-            "properties": {
-              "language": {
-                "$id": "#/properties/productAttributes/properties/descriptionShort/items/properties/language",
-                "type": "string",
-                "examples": ["de"]
-              },
-              "message": {
-                "$id": "#/properties/productAttributes/properties/descriptionShort/items/properties/message",
-                "type": "string",
-                "examples": ["Eine rote Tasche"]
-              }
-            }
-          }
-        },
-        "articleGroupingDesignation": {
-          "$id": "#/properties/productAttributes/properties/articleGroupingDesignation",
-          "type": "string",
-          "description": "E.g. series/program/model designation or use for collection descriptions.",
-          "examples": ["Herbst Winter Beige Collection"]
-        },
-        "brandName": {
-          "$id": "#/properties/productAttributes/properties/brandName",
-          "type": "string",
-          "maxLength": 70,
-          "description": "brand Name.",
-          "examples": ["Fashion Marke"]
-        },
-        "additionalTradeItemDescription": {
-          "$id": "#/properties/productAttributes/properties/additionalTradeItemDescription",
-          "type": "array",
-          "maxLength": 500,
-          "description": "Additional item description necessary to communicate to the industry to help define the product.",
-          "examples": [
-            [
-              {
-                "message": "Skirt in jogging style",
-                "language": "en"
-              }
-            ]
-          ],
-          "additionalItems": true,
-          "items": {
-            "$id": "#/properties/productAttributes/properties/additionalTradeItemDescription/items",
-            "type": "object",
-            "examples": [
-              {
-                "language": "en",
-                "message": "Skirt in jogging style"
-              }
-            ],
-            "additionalProperties": false,
-            "required": ["language", "message"],
-            "properties": {
-              "language": {
-                "$id": "#/properties/productAttributes/properties/additionalTradeItemDescription/items/properties/language",
-                "type": "string",
-                "examples": ["en"]
-              },
-              "message": {
-                "$id": "#/properties/productAttributes/properties/additionalTradeItemDescription/items/properties/message",
-                "type": "string",
-                "examples": ["Skirt in jogging style"]
-              }
-            }
-          }
-        },
-        "measurementInformationNetContent": {
-          "$id": "#/properties/productAttributes/properties/measurementInformationNetContent",
-          "type": "integer",
-          "description": "The amount of a trade item contained in the package, as claimed on the label (according to the country specific regulation on packagings labelling), in case of a multi-pack the net content of the total trade item. For fixed value trade items use the value on the package to avoid variable fill rate issue that arises with some trade items sold by volume or weight whose actual content may vary slightly from batch to batch. In case of variable quantity trade items indicate the average quantity.",
-          "maxLength": 15,
-          "examples": [1.0]
-        },
-        "waterRepellent": {
-          "$id": "#/properties/productAttributes/properties/waterRepellent",
-          "type": "boolean",
-          "description": "Indication of whether product has a finish that resists absorption or penetration of water.",
-          "examples": [true]
-        },
-        "colour": {
-          "$id": "#/properties/productAttributes/properties/colour",
-          "type": "array",
-          "examples": [
-            [
-              {
-                "colourCode": "780",
-                "colourName": [
-                  {
-                    "language": "en",
-                    "name": "sunset red"
-                  }
-                ]
-              }
-            ]
-          ],
-          "additionalItems": true,
-          "items": {
-            "$id": "#/properties/productAttributes/properties/colour/items",
-            "type": "object",
-            "examples": [
-              {
-                "colourCode": "780",
-                "colourName": [
-                  {
-                    "language": "en",
-                    "name": "sunset red"
-                  }
-                ]
-              }
-            ],
-            "additionalProperties": false,
-            "required": ["colourCode", "colourName"],
-            "properties": {
-              "colourCode": {
-                "$id": "#/properties/productAttributes/properties/colour/items/properties/colourCode",
-                "type": "string",
-                "description": "A code depicting the colour of an object according to a specific code list. The applied code list is specified as additional information together with the colour code.",
-                "examples": ["780"]
-              },
-              "colourName": {
-                "$id": "#/properties/productAttributes/properties/colour/items/properties/colourName",
-                "type": "array",
-                "examples": [
-                  [
-                    {
-                      "language": "en",
-                      "name": "sunset red"
-                    }
-                  ]
-                ],
-                "additionalItems": true,
-                "items": {
-                  "$id": "#/properties/productAttributes/properties/colour/items/properties/colourName/items",
-                  "type": "object",
-                  "examples": [
-                    {
-                      "name": "sunset red",
-                      "language": "en"
-                    }
-                  ],
-                  "additionalProperties": false,
-                  "required": ["language", "name"],
-                  "properties": {
-                    "language": {
-                      "$id": "#/properties/productAttributes/properties/colour/items/properties/colourName/items/properties/language",
-                      "type": "string",
-                      "pattern": "^[a-zA-Z]{2}$",
-                      "default": "",
-                      "examples": ["en"]
+                    "importClassificationValue": "40082110",
+                    "grossWeightInGram": 150.0,
+                    "consumerFirstAvailabilityDateTime": "2020-11-02T17:03:08.048Z",
+                    "measurements": {
+                        "depthInMm": 2.0,
+                        "widthInMm": 20.0,
+                        "heightInMm": 25.0
                     },
-                    "name": {
-                      "$id": "#/properties/productAttributes/properties/colour/items/properties/colourName/items/properties/name",
-                      "type": "string",
-                      "maxLength": 80,
-                      "examples": ["sunset red"]
-                    }
-                  }
+                    "importClassificationSystem": "customTariffs",
+                    "packagingInformation/packagingTypeCode": "box",
+                    "isTradeItemADespatchUnit": true
                 }
-              }
-            }
-          }
-        },
-        "searchColour": {
-          "$id": "#/properties/productAttributes/properties/searchColour",
-          "description": "describes the main colour of the article.",
-          "examples": [["red", "pink"]],
-          "additionalItems": true,
-          "items": {
-            "$id": "#/properties/productAttributes/properties/searchColour/items",
-            "type": "string",
-            "enum": [
-              "transparent",
-              "white",
-              "beige",
-              "yellow",
-              "red",
-              "green",
-              "blue",
-              "brown",
-              "grey",
-              "black",
-              "petrol",
-              "turquoise",
-              "olive",
-              "orange",
-              "pink",
-              "purple",
-              "gold",
-              "silver",
-              "anthracite",
-              "colorful"
-            ],
-            "examples": ["red", "pink"]
-          }
-        },
-        "size": {
-          "$id": "#/properties/productAttributes/properties/size",
-          "type": "array",
-          "description": "Apparel and footwear are made in different sizes, and industry-standard names (e.g., size 36, 38, ..., or S, M, L ...) are used for size designation which in apparel are grouped into size ranges (normal, stocky...). However, these standards often vary for garments depending on the country, so a country code must be added to the specification.  In addition, other dimensions (e.g., skirt length, waist size, sleeve length, collar width ...) can be displayed in millimeters or inches, specifying the object (which is to be measured), the unit (millimeters or inches), and the dimension specification. For shoes, specification is typically German sizes or English sizes (in inches, with one decimal place). In addition, further size information can be provided on width (codetable), the sole and heel height and / or leg height for boots.  For bras, the underbust circumference and the cup-size two separate attributes.At the sales unit level, indicate the respective size, which is also noted on the sewing and / or price label. The deliverable sizes of an article can be easily determined by the data recipient through these details and the link with the GMN.Accessories are typically given lengths or lengths and widths (e.g., scarves, shawls, belts) or product specifics (e.g., hats: head circumference - gloves: width) in millimeters or inches..",
-          "examples": [
-            [
-              {
-                "mainSize": "72",
-                "subSize": "B",
-                "country": "de"
-              }
-            ]
-          ],
-          "additionalItems": true,
-          "items": {
-            "$id": "#/properties/productAttributes/properties/size/items",
-            "type": "object",
-            "examples": [
-              {
-                "mainSize": "72",
-                "subSize": "B",
-                "country": "de"
-              }
-            ],
-            "additionalProperties": false,
-            "required": ["country", "mainSize", "subSize"],
-            "properties": {
-              "country": {
-                "$id": "#/properties/productAttributes/properties/size/items/properties/country",
-                "type": "string",
-                "examples": ["de"]
-              },
-              "mainSize": {
-                "$id": "#/properties/productAttributes/properties/size/items/properties/mainSize",
-                "type": "string",
-                "examples": ["72"]
-              },
-              "subSize": {
-                "$id": "#/properties/productAttributes/properties/size/items/properties/subSize",
-                "type": "string",
-                "examples": ["B"]
-              }
-            }
-          }
-        },
-        "material": {
-          "$id": "#/properties/productAttributes/properties/material",
-          "type": "array",
-          "examples": [
-            [
-              {
-                "composition": [
-                  {
-                    "percentageShare": 100.0,
-                    "typeOfMaterial": "cotton"
-                  }
-                ],
-                "describedObject": "lining"
-              }
-            ]
-          ],
-          "additionalItems": true,
-          "items": {
-            "$id": "#/properties/productAttributes/properties/material/items",
-            "type": "object",
-            "examples": [
-              {
-                "describedObject": "lining",
-                "composition": [
-                  {
-                    "percentageShare": 100.0,
-                    "typeOfMaterial": "cotton"
-                  }
-                ]
-              }
-            ],
-            "additionalProperties": false,
-            "required": ["describedObject", "composition"],
-            "properties": {
-              "describedObject": {
-                "$id": "#/properties/productAttributes/properties/material/items/properties/describedObject",
-                "enume": [
-                  "outerFabric",
-                  "lining",
-                  "padding",
-                  "collar",
-                  "pockets",
-                  "tip",
-                  "applications",
-                  "ohters"
-                ],
-                "description": "The described object is mapped according to the code table.",
-                "examples": ["lining"]
-              },
-              "composition": {
-                "$id": "#/properties/productAttributes/properties/material/items/properties/composition",
-                "type": "array",
-                "examples": [
-                  [
-                    {
-                      "typeOfMaterial": "cotton",
-                      "percentageShare": 100.0
-                    }
-                  ]
-                ],
-                "additionalItems": true,
-                "items": {
-                  "$id": "#/properties/productAttributes/properties/material/items/properties/composition/items",
-                  "type": "object",
-                  "examples": [
-                    {
-                      "percentageShare": 100.0,
-                      "typeOfMaterial": "cotton"
-                    }
-                  ],
-                  "additionalProperties": false,
-                  "required": ["typeOfMaterial", "percentageShare"],
-                  "properties": {
-                    "typeOfMaterial": {
-                      "$id": "#/properties/productAttributes/properties/material/items/properties/composition/items/properties/typeOfMaterial",
-                      "enum": [
-                        "abaca ",
-                        "acetate",
-                        "acrylic",
-                        "alfa",
-                        "alginate",
-                        "alpaca",
-                        "angora",
-                        "animal",
-                        "aramid",
-                        "asbestos",
-                        "beaver",
-                        "broom",
-                        "camel",
-                        "cashgora",
-                        "cashmere",
-                        "cattlehair",
-                        "chlorofibre",
-                        "coir ",
-                        "commongoathair",
-                        "cotton",
-                        "cupro",
-                        "elastane",
-                        "elastan",
-                        "elastodiene",
-                        "elastolefin",
-                        "elastomultiester",
-                        "flax",
-                        "fluorofibre",
-                        "glassfibre",
-                        "guanaco",
-                        "henequen",
-                        "horsehair",
-                        "jute",
-                        "kapok",
-                        "leather",
-                        "linen",
-                        "llama",
-                        "lyocell",
-                        "maguey",
-                        "manilahemp",
-                        "melamine",
-                        "metal",
-                        "modacrylic",
-                        "modal",
-                        "mohair",
-                        "nylon",
-                        "organiccotton",
-                        "otter",
-                        "paper",
-                        "polyacrylic",
-                        "polyamide",
-                        "polycarbamide",
-                        "polyurethane",
-                        "polyurethan",
-                        "polyester",
-                        "polyethylene",
-                        "polyimide",
-                        "polylactide",
-                        "protein",
-                        "ramie",
-                        "silk",
-                        "sisal",
-                        "suede",
-                        "sunn",
-                        "tencel",
-                        "triacetate",
-                        "trivinyl",
-                        "truehemp",
-                        "vicuna",
-                        "vinylal",
-                        "virginwool",
-                        "viscose",
-                        "wool",
-                        "yak",
-                        "other"
-                      ],
-                      "examples": ["cotton"]
-                    },
-                    "percentageShare": {
-                      "$id": "#/properties/productAttributes/properties/material/items/properties/composition/items/properties/percentageShare",
-                      "type": "number",
-                      "description": "Here, the proportion of the material is shown as a percentage.",
-                      "examples": [100.0]
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "careInstructions": {
-          "$id": "#/properties/productAttributes/properties/careInstructions",
-          "type": "object",
-          "examples": [
-            {
-              "ironingCharacteristics": "low",
-              "washingCharacteristics": "normal30",
-              "professionalCleaningCharacteristics": "noDry",
-              "bleachingCharacteristics": "doNotBleach",
-              "dryingCharacteristics": "lineDrying"
-            }
-          ],
-          "additionalProperties": false,
-          "required": [
-            "washingCharacteristics",
-            "dryingCharacteristics",
-            "bleachingCharacteristics",
-            "ironingCharacteristics",
-            "professionalCleaningCharacteristics"
-          ],
-          "properties": {
-            "washingCharacteristics": {
-              "$id": "#/properties/productAttributes/properties/careInstructions/properties/washingCharacteristics",
-              "enum": [
-                "notWash",
-                "handWash",
-                "normal30",
-                "normal40",
-                "normal50",
-                "normal60",
-                "normal70",
-                "normal95",
-                "mild30",
-                "midl40",
-                "mild50",
-                "mild60",
-                "special30",
-                "special40"
-              ],
-              "description": "information given according to code list.",
-              "examples": ["normal30"]
-            },
-            "dryingCharacteristics": {
-              "$id": "#/properties/productAttributes/properties/careInstructions/properties/dryingCharacteristics",
-              "enum": [
-                "noDrying",
-                "mildDrying60",
-                "milddrying80",
-                "flatDrying",
-                "flatDripDrying",
-                "lineDrying",
-                "flatDryingShade",
-                "FlatDripDryingShade",
-                "lineDryingShade",
-                "lineDripDryingShade"
-              ],
-              "description": "information given according to code list.",
-              "examples": ["lineDrying"]
-            },
-            "bleachingCharacteristics": {
-              "$id": "#/properties/productAttributes/properties/careInstructions/properties/bleachingCharacteristics",
-              "enum": ["anyBleachingAgentAllowed", "onlyOxygenBleachAllowed", "doNotBleach"],
-              "description": "information given according to code list.",
-              "examples": ["doNotBleach"]
-            },
-            "ironingCharacteristics": {
-              "$id": "#/properties/productAttributes/properties/careInstructions/properties/ironingCharacteristics",
-              "enum": ["low", "moderate", "hot", "until200"],
-              "description": "information given according to code list.",
-              "examples": ["low"]
-            },
-            "professionalCleaningCharacteristics": {
-              "$id": "#/properties/productAttributes/properties/careInstructions/properties/professionalCleaningCharacteristics",
-              "enum": [
-                "noDry",
-                "drymilde",
-                "dryNormal",
-                "dryChlorNormal",
-                "dryChlorMild",
-                "dryChlorVeryMild",
-                "wet",
-                "wetMild",
-                "WetVeryMild",
-                "noWetClean"
-              ],
-              "description": "information given according to code list.",
-              "examples": ["noDry"]
-            }
-          }
-        },
-        "season": {
-          "enum": [
-            "allYear",
-            "autumn",
-            "autumnWinter",
-            "spring",
-            "springSummer",
-            "summer",
-            "winter",
-            "other"
-          ],
-          "$id": "#/properties/productAttributes/properties/season",
-          "type": "string",
-          "examples": ["springSummer"]
-        },
-        "seasonYear": {
-          "$id": "#/properties/productAttributes/properties/season",
-          "type": "number",
-          "maximum": 9999,
-          "examples": ["springSummer"]
-        },
-        "isNos": {
-          "$id": "#/properties/productAttributes/properties/isNos",
-          "type": "boolean",
-          "description": "information as to whether Never Out of Stock NOS is included.",
-          "examples": [true]
-        },
-        "files": {
-          "$id": "#/properties/productAttributes/properties/files",
-          "type": "array",
-          "examples": [
-            [
-              {
-                "uniformResourceIdentifier": "http://....",
-                "fileEffectiveStartDateTime": "2019-11-02T17:03:08.048Z",
-                "fileEffectiveEndDateTime": "2020-11-02T17:03:08.048Z",
-                "referencedFileType": "productImage"
-              }
-            ]
-          ],
-          "additionalItems": true,
-          "items": {
-            "$id": "#/properties/productAttributes/properties/files/items",
-            "type": "object",
-            "examples": [
-              {
-                "fileEffectiveEndDateTime": "2020-11-02T17:03:08.048Z",
-                "referencedFileType": "productImage",
-                "uniformResourceIdentifier": "http://....",
-                "fileEffectiveStartDateTime": "2019-11-02T17:03:08.048Z"
-              }
             ],
             "additionalProperties": false,
             "required": [
-              "referencedFileType",
-              "uniformResourceIdentifier",
-              "fileEffectiveStartDateTime",
-              "fileEffectiveEndDateTime"
+                "isTradeItemADespatchUnit",
+                "importClassificationSystem",
+                "importClassificationValue"
             ],
             "properties": {
-              "referencedFileType": {
-                "$id": "#/properties/productAttributes/properties/files/items/properties/referencedFileType",
-                "enum": [
-                  "360DegreeImage",
-                  "assemblyInstructions",
-                  "audio",
-                  "certification",
-                  "chemicalAssessmentSummary",
-                  "chemicalSafetyReport",
-                  "childNutritionLabel",
-                  "consumerHandlingAndStorage",
-                  "crosssectionView",
-                  "dietCertificate",
-                  "document",
-                  "dopSheet",
-                  "drugFactLabel",
-                  "energyLabel",
-                  "groupCharacteristicSheet",
-                  "hazardousSubstancesData",
-                  "ifu",
-                  "internalView",
-                  "logo",
-                  "marketingInformation",
-                  "materialSamples",
-                  "mobileDeviceImage",
-                  "nutritionFactLabel",
-                  "organicCertificate",
-                  "otherExternalInformation",
-                  "outOfPackageImage",
-                  "packagingArtwork",
-                  "planogram",
-                  "productFormulationStatement",
-                  "productImage",
-                  "productLabelImage",
-                  "productWebsite",
-                  "qrCode",
-                  "qualityControlPlan",
-                  "recipeWebsite",
-                  "regulatoryInspectionAudit",
-                  "riskAnalysisDocument",
-                  "safetyDataSheet",
-                  "safetySummarySheet",
-                  "sampleShippingOrder",
-                  "summaryOfProductCharacteristics",
-                  "testingMethodologyResults",
-                  "tradeItemDescription",
-                  "tradeItemImageWithDimensions",
-                  "video",
-                  "warrantyInformation",
-                  "website",
-                  "zoomView"
-                ],
-                "description": "Code identifying the type or purpose of the information contained in the referenced external file. Example: Image of product or product label, marketing information, Safety Data Sheet, planogram..",
-                "examples": ["productImage"]
-              },
-              "uniformResourceIdentifier": {
-                "$id": "#/properties/productAttributes/properties/files/items/properties/uniformResourceIdentifier",
-                "type": "string",
-                "description": "Simple text string that refers to a resource on the internet; URIs may refer to documents, resources, people, etc.",
-                "examples": ["http://...."]
-              },
-              "fileEffectiveStartDateTime": {
-                "$id": "#/properties/productAttributes/properties/files/items/properties/fileEffectiveStartDateTime",
-                "type": "string",
-                "format": "date-time",
-                "description": "The date (and time) this image is the current image for this trade item. The date (and time) upon which the target of this external link ceases to be effective for use.",
-                "examples": ["2020-11-02T17:03:08.048Z"]
-              },
-              "fileEffectiveEndDateTime": {
-                "$id": "#/properties/productAttributes/properties/files/items/properties/fileEffectiveEndDateTime",
-                "type": "string",
-                "format": "date-time",
-                "description": "The date (and time) upon which the target of this external link begins to be effective for use.",
-                "examples": ["2020-11-02T17:03:08.048Z"]
-              }
+                "isTradeItemADespatchUnit": {
+                    "$id": "#/properties/logistics/properties/isTradeItemADespatchUnit",
+                    "type": "boolean",
+                    "description": "Identifies that the information provider considers the trade item as a despatch (shipping) unit. This may be relationship dependent based on channel of trade or other point to point agreement.",
+                    "examples": [true]
+                },
+                "importClassificationSystem": {
+                    "$id": "#/properties/logistics/properties/importClassificationSystem",
+                    "enum": ["customsTariffNumber", "intrastat", "tarifIntegreDeLaCommunaute"],
+                    "maxLength": 120,
+                    "description": "Imports and exports of trade items typically require classification codes to determine appropriate duties and tariffs. Values include Netherlands Import Code, Harmonized Commodity Description and Coding System, Customs Tariff and INTRASTAT Code, Harmonized Tariff Schedule of the United States, INTRASTAT Combined Nomenclature, Tarif Intégré de la Communauté.st of possible values can be found in the documentation",
+                    "examples": ["customsTariffNumber"]
+                },
+                "importClassificationValue": {
+                    "$id": "#/properties/logistics/properties/importClassificationValue",
+                    "type": "string",
+                    "maxLength": 80,
+                    "description": "Classification code to determine the appropriate duty or tariff for the import and export of the trade item.",
+                    "examples": ["A2000SD"]
+                },
+                "consumerFirstAvailabilityDateTime": {
+                    "$id": "#/properties/logistics/properties/consumerFirstAvailabilityDateTime",
+                    "type": "string",
+                    "description": "The first date/time that the buyer is allowed to sell the trade item to consumers. Accepts the format JJJJ-MM-TT",
+                    "format": "date-time",
+                    "examples": ["2018-11-13"]
+                },
+                "packagingType": {
+                    "$id": "#/properties/logistics/properties/packagingInformation/packagingType",
+                    "enum": ["box", "crate", "carton", "polyBag", "hanger", "other"],
+                    "description": "The dominant means used to transport, store, handle or display the trade item as defined by the data source. This packaging is not used to describe any manufacturing process.",
+                    "examples": ["box"]
+                },
+                "grossWeightInGram": {
+                    "$id": "#/properties/logistics/properties/grossWeightInGram",
+                    "type": "number",
+                    "maxLength": 15,
+                    "description": "Used to identify the gross weight of the trade item in grams. The gross weight includes all packaging materials of the trade item. At pallet level the trade item, grossWeight includes the weight of the pallet itself.",
+                    "examples": [150.0]
+                },
+                "measurements": {
+                    "$id": "#/properties/logistics/properties/measurements",
+                    "type": "object",
+                    "description": "as measured according GDSN Package Measurement Rules. If the trade unit load, include the shipping platform unless according to the Platform Type Code chosen.",
+                    "examples": [
+                        {
+                            "depthInMm": 2.0,
+                            "widthInMm": 20.0,
+                            "heightInMm": 25.0
+                        }
+                    ],
+                    "additionalProperties": false,
+                    "required": ["widthInMm", "heightInMm", "depthInMm"],
+                    "properties": {
+                        "widthInMm": {
+                            "$id": "#/properties/logistics/properties/measurements/properties/widthInMm",
+                            "type": "integer",
+                            "maxLength": 15,
+                            "description": "The width of the trade item, as measured according GDSN Package Measurement Rules. If the trade unit load, include the shipping platform unless according to the Platform Type Code chosen.",
+                            "examples": [20.0]
+                        },
+                        "heightInMm": {
+                            "$id": "#/properties/logistics/properties/measurements/properties/heightInMm",
+                            "type": "integer",
+                            "maxLength": 15,
+                            "description": "The height of the trade item, as measured according GDSN Package Measurement Rules. If the trade unit load, include the shipping platform unless according to the Platform Type Code chosen..",
+                            "examples": [25.0]
+                        },
+                        "depthInMm": {
+                            "$id": "#/properties/logistics/properties/measurements/properties/depthInMm",
+                            "type": "integer",
+                            "maxLength": 15,
+                            "description": "The depth of the trade item, as measured according GDSN Package Measurement Rules. If the trade unit load, include the shipping platform unless according to the Platform Type Code chosen.",
+                            "examples": [2.0]
+                        }
+                    }
+                }
             }
-          }
         },
-        "countryOfOrigin": {
-          "$id": "#/properties/productAttributes/properties/countryOfOrigin",
-          "type": "string",
-          "pattern": "^[a-zA-Z]{2}$",
-          "description": "The Code ISO-3166 Alpha-2 country code (codes) in which the goods have been produced or manufactured, according to criteria established for the purposes of application of the value may or may not be presented on the trade item label..",
-          "examples": ["de"]
+        "productMetaData": {
+            "$id": "#/properties/productMetaData",
+            "type": "object",
+            "examples": [
+                {
+                    "gtin": "4043874021975",
+                    "isTradeItemAnOrderableUnit": true,
+                    "effectiveDateTime": "2019-11-02T17:03:08.048Z",
+                    "informationProviderGln": "4004757000005",
+                    "brandOwnerGln": "4004757000005",
+                    "targetMarketCountryCode": "de",
+                    "startAvailabilityDateTime": "2019-11-02T17:03:08.048Z",
+                    "globalModelNumber": "471323123",
+                    "packagingMarkedLabelAccreditationCode": "OKOTEST",
+                    "articleNumber": "210-9873232",
+                    "manufacturerGLN": "4004757000005",
+                    "endAvailabilityDateTime": "2019-11-02T17:03:08.048Z",
+                    "suggestedRetailPrice": [
+                        {
+                            "currency": "EUR",
+                            "price": 14.99,
+                            "country": "de"
+                        }
+                    ],
+                    "isTradeItemAConsumerUnit": true,
+                    "unitDescriptorCode": "baseUnitOrEach",
+                    "isTradeItemBaseUnit": true
+                }
+            ],
+            "additionalProperties": false,
+            "required": [
+                "manufacturerGLN",
+                "brandOwnerGln",
+                "gtin",
+                "articleNumber",
+                "informationProviderGln",
+                "effectiveDateTime",
+                "startAvailabilityDateTime",
+                "endAvailabilityDateTime"
+            ],
+            "properties": {
+                "globalModelNumber": {
+                    "$id": "#/properties/productMetaData/properties/globalModelNumber",
+                    "type": "string",
+                    "description": "As well as article identification, articles are summarized using the Global Model Number (GMN).",
+                    "maxLength": 30,
+                    "examples": ["471323123"]
+                },
+                "manufacturerGLN": {
+                    "$id": "#/properties/productMetaData/properties/manufacturerGLN",
+                    "type": "string",
+                    "description": "AParty name and identification information for the manufacturer of the trade item.",
+                    "maxLength": 13,
+                    "examples": ["4004757000005"]
+                },
+                "brandOwnerGln": {
+                    "$id": "#/properties/productMetaData/properties/brandOwnerGln",
+                    "type": "string",
+                    "description": "The Global Location Number (GLN) is a structured Identification of a physical location, legal or functional entity within an enterprise. The GLN is the primary party identifier. Each party identified in the trading relationship must have a primary party Identification.",
+                    "maxLength": 13,
+                    "examples": ["4004757000005"]
+                },
+                "gtin": {
+                    "$id": "#/properties/productMetaData/properties/gtin",
+                    "type": "string",
+                    "description": "The Global Trade Item Number (GTIN) is the GS1 key used to uniquely identify a trade item (also for re- or transport packagings). A trade item is any item (product or service) upon which there is a need to retrieve pre-defined information, and that may be planned, priced, ordered, delivered and/or invoiced at any point in any supply chain.",
+                    "maxLength": 14,
+                    "examples": ["4043874021975"]
+                },
+                "articleNumber": {
+                    "$id": "#/properties/productMetaData/properties/articleNumber",
+                    "type": "string",
+                    "description": "The manufacturer's internal article number. Usually on model level including a color identifier",
+                    "maxLength": 50,
+                    "examples": ["210-9873232"]
+                },
+                "isTradeItemBaseUnit": {
+                    "$id": "#/properties/productMetaData/properties/isTradeItemBaseUnit",
+                    "type": "boolean",
+                    "description": "Indicator identifying the item as the base unit level of the trade item hierarchy.",
+                    "examples": [true]
+                },
+                "unitDescriptorCode": {
+                    "$id": "#/properties/productMetaData/properties/unitDescriptorCode",
+                    "enum": [
+                        "baseUnitOrEach",
+                        "case",
+                        "displayShipper",
+                        "mixedModule",
+                        "packOrInnerPack",
+                        "pallet",
+                        "transportLoad"
+                    ],
+                    "description": "Describes the hierarchical level of the trade item. TradeItemUnitIndicator is mandatory. Examples: `CASE`, ”PALLET”",
+                    "examples": ["baseUnitOrEach"]
+                },
+                "packagingMarkedLabelAccreditationCode": {
+                    "$id": "#/properties/productMetaData/properties/packagingMarkedLabelAccreditationCode",
+                    "type": "string",
+                    "enume": [
+                        "bioLabelGerman",
+                        "blueAngel",
+                        "bluesign",
+                        "bsci",
+                        "fairForLife",
+                        "fairTradeMark",
+                        "fairtradeCotton",
+                        "ivnNaturleder",
+                        "ivnNaturTextilesBest",
+                        "oekoTexLabel"
+                    ],
+                    "maxLength": 120,
+                    "description": "A marking that the trade item received recognition, endorsement, certification by following guidelines by the label issuing agency. This does not represent claims for regulatory purposes on products such as free from markings.",
+                    "examples": ["oekoTexLabel"]
+                },
+                "informationProviderGln": {
+                    "$id": "#/properties/productMetaData/properties/informationProviderGln",
+                    "type": "string",
+                    "description": "GLN of the information provider, under which the base unit and all of its packaging items are deposited ",
+                    "maxLength": 13,
+                    "examples": ["4004757000005"]
+                },
+                "targetMarketCountryCode": {
+                    "$id": "#/properties/productMetaData/properties/targetMarketCountryCode",
+                    "type": "string",
+                    "description": "Target market (country) assigned to the trade item (and all of its packaging items). The target market is where the trade item is intended to be sold. Different target markets have different demands regarding the item master data profile.Code: ISO-3166 Alpha-2.",
+                    "examples": ["de"]
+                },
+                "effectiveDateTime": {
+                    "$id": "#/properties/productMetaData/properties/effectiveDateTime",
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "The date on which the information contents of the master data version are valid. This effective date can be used for initial trade item offering, or to mark a change in the information related to an existing trade item. In the last case, it would mark when these changes take effect.",
+                    "examples": ["2019-11-02"]
+                },
+                "startAvailabilityDateTime": {
+                    "$id": "#/properties/productMetaData/properties/startAvailabilityDateTime",
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "The date (CCYY-MM-DDTHH:MM:SS) from which the trade item becomes available from the supplier, including seasonal or temporary trade item and services.",
+                    "examples": ["2019-11-02"]
+                },
+                "endAvailabilityDateTime": {
+                    "$id": "#/properties/productMetaData/properties/endAvailabilityDateTime",
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "The date from which the trade item is no longer available from the information provider, including seasonal or temporary trade item and services.",
+                    "examples": ["2019-11-02"]
+                },
+                "isTradeItemAnOrderableUnit": {
+                    "$id": "#/properties/productMetaData/properties/isTradeItemAnOrderableUnit",
+                    "type": "boolean",
+                    "description": "An indicator identifying that the information provider considers this trade item to be at a hierarchy level where they will accept orders from customers. This may be different from what the information provider identifies as a despatch unit. This may be a relationship dependent based on channel of trade or other point to point agreement.",
+                    "examples": [true]
+                },
+                "suggestedRetailPrice": {
+                    "$id": "#/properties/productMetaData/properties/suggestedRetailPrice",
+                    "type": "array",
+                    "description": "The retail (to consumer) price as suggested by the manufacturer. This is normally used to establish a proposed value for the trade item for marketing purposes. May or may not appear on the package.",
+                    "examples": [
+                        [
+                            {
+                                "country": "de",
+                                "currency": "EUR",
+                                "price": 14.99
+                            }
+                        ]
+                    ],
+                    "additionalItems": true,
+                    "items": {
+                        "$id": "#/properties/productMetaData/properties/suggestedRetailPrice/items",
+                        "type": "object",
+                        "examples": [
+                            {
+                                "currency": "EUR",
+                                "price": 14.99,
+                                "country": "de"
+                            }
+                        ],
+                        "additionalProperties": false,
+                        "required": ["country", "price", "currency"],
+                        "properties": {
+                            "country": {
+                                "$id": "#/properties/productMetaData/properties/suggestedRetailPrice/items/properties/country",
+                                "type": "string",
+                                "examples": ["de"]
+                            },
+                            "price": {
+                                "$id": "#/properties/productMetaData/properties/suggestedRetailPrice/items/properties/price",
+                                "type": "number",
+                                "examples": [14.99]
+                            },
+                            "currency": {
+                                "$id": "#/properties/productMetaData/properties/suggestedRetailPrice/items/properties/currency",
+                                "type": "string",
+                                "examples": ["EUR"]
+                            }
+                        }
+                    }
+                },
+                "isTradeItemAConsumerUnit": {
+                    "$id": "#/properties/productMetaData/properties/isTradeItemAConsumerUnit",
+                    "type": "boolean",
+                    "description": "An explanation about the purpose of this instance.Identifies whether the trade item to be taken possession of ,or to be consumed or used by an end user or both, as determined by the manufacturer. The end user could be, but is not limited to, a consumer as in items sold at retail, or a patient/clinician/technician in a healthcare setting, or an operator for foodservice such as restaurants, airlines, cafeterias, etc.",
+                    "examples": [true]
+                },
+                "quantityOfChildren": {
+                    "$id": "#/properties/productMetaData/properties/quantityOfChildren",
+                    "type": "integer",
+                    "description": "Indicates the number of unique next lower level trade items contained in a complex trade item. A complex trade item can contain at least two different GTINs.",
+                    "maxLength": 10,
+                    "examples": [10]
+                },
+                "totalQuantityOfNextLowerLevelTradeItems": {
+                    "$id": "#/properties/productMetaData/properties/totalQuantityOfNextLowerLevelTradeItems",
+                    "type": "integer",
+                    "description": "This represents the total quantity of next lower level trade items that this trade item (packaging item) contains. It is derived by summing the `Quantity of next lower trade item` of all Child trade item GTINs contained in the trade item.",
+                    "maxLength": 6,
+                    "examples": [0.0]
+                },
+                "childTradeItemGtin": {
+                    "$id": "#/properties/productMetaData/properties/childTradeItemGtin",
+                    "type": "array",
+                    "description": "Identifies the GTIN of the next lower level trade item that the parent trade item contains.",
+                    "maxLength": 14,
+                    "examples": [[]],
+                    "additionalItems": true
+                },
+                "numberOfTheNextLowerArticleUnit": {
+                    "$id": "#/properties/productMetaData/properties/numberOfTheNextLowerArticleUnit",
+                    "type": "null",
+                    "description": "The quantity or number of a next lower level trade item (GTIN) that the parent trade item (packaging item) contains.",
+                    "maxLength": 6,
+                    "examples": [10]
+                }
+            }
+        },
+        "productAttributes": {
+            "$id": "#/properties/productAttributes",
+            "type": "object",
+            "examples": [
+                {
+                    "brandName": "Fashion Marke",
+                    "additionalTradeItemDescription": [
+                        {
+                            "language": "de",
+                            "message": "Eine rote Tasche"
+                        }
+                    ],
+                    "searchColour": ["red", "pink"],
+                    "waterRepellent": true,
+                    "files": [
+                        {
+                            "uniformResourceIdentifier": "http://....",
+                            "fileEffectiveStartDateTime": "2019-11-02T17:03:08.048Z",
+                            "fileEffectiveEndDateTime": "2020-11-02T17:03:08.048Z",
+                            "referencedFileType": "productImage"
+                        }
+                    ],
+                    "careInstructions": {
+                        "bleachingCharacteristics": "none",
+                        "dryingCharacteristics": "lineDrying",
+                        "ironingCharacteristics": "low",
+                        "washingCharacteristics": "normal30",
+                        "professionalCleaningCharacteristics": "noDry"
+                    },
+                    "descriptionShort": [
+                        {
+                            "message": "Eine rote Tasche",
+                            "language": "de"
+                        }
+                    ],
+                    "material": [
+                        {
+                            "composition": [
+                                {
+                                    "percentageShare": 100.0,
+                                    "typeOfMaterial": "cotton"
+                                }
+                            ],
+                            "describedObject": "lining"
+                        }
+                    ],
+                    "measurementInformationNetContent": 1.0,
+                    "season": "springSummer",
+                    "enum": [
+                        "allYear",
+                        "autumn",
+                        "autumnWinter",
+                        "spring",
+                        "springSummer",
+                        "summer",
+                        "winter",
+                        "other"
+                    ],
+                    "isNos": false,
+                    "marketingMessage": [
+                        {
+                            "message": "An absolute casual hit, the narrowly cut fabric skirt in jogging style. The stretchy material composition of the short tubular skirt, made of 65% viscose, 30% nylon and 5% elastane, guarantees a great and comfortable fit. The partially elastic waistband with drawstring and cord as well as piped pockets on the seat and side pockets give the skirt an elegant, sporty appearance. The styling combinations are endless: whether with a simple blouse and heels or a casual sweater and sandals, the skirt transforms every outfit into a skilful eye-catcher.",
+                            "language": "en"
+                        }
+                    ],
+                    "colour": [
+                        {
+                            "colourCode": "780",
+                            "colourName": [
+                                {
+                                    "language": "en",
+                                    "name": "sunset red"
+                                }
+                            ]
+                        }
+                    ],
+                    "countryOfOrigin": "de",
+                    "size": [
+                        {
+                            "mainSize": "72",
+                            "subSize": "B",
+                            "country": "de"
+                        }
+                    ],
+                    "articleGroupingDesignation": "Herbst Winter Beige Collection",
+                    "productClassificationValue": "121310",
+                    "productClassificationSystem": "bte"
+                }
+            ],
+            "additionalProperties": false,
+            "required": ["brandName", "colour", "material"],
+            "properties": {
+                "productClassificationValue": {
+                    "$id": "#/properties/productAttributes/properties/productClassificationValue",
+                    "type": "string",
+                    "enum": ["eclass", "dtb", "fedasPck", "bte", "etim", "other"],
+                    "examples": ["121310"]
+                },
+                "productClassificationSystem": {
+                    "$id": "#/properties/productAttributes/properties/productClassificationSystem",
+                    "type": "string",
+                    "enum": ["eclass", "dtb", "fedasPck", "bte", "etim", "other"],
+                    "examples": ["bte"]
+                },
+                "marketingMessage": {
+                    "$id": "#/properties/productAttributes/properties/marketingMessage",
+                    "type": "array",
+                    "maxLength": 4000,
+                    "description": "Marketing message associated to the Trade item.",
+                    "examples": [
+                        [
+                            {
+                                "message": "Eine tolle Tasche",
+                                "language": "de"
+                            }
+                        ]
+                    ],
+                    "additionalItems": true,
+                    "items": {
+                        "$id": "#/properties/productAttributes/properties/marketingMessage/items",
+                        "type": "object",
+                        "examples": [
+                            {
+                                "message": "Eine tolle Tasche",
+                                "language": "de"
+                            }
+                        ],
+                        "additionalProperties": false,
+                        "required": ["language", "message"],
+                        "properties": {
+                            "language": {
+                                "$id": "#/properties/productAttributes/properties/marketingMessage/items/properties/language",
+                                "type": "string",
+                                "examples": ["de"]
+                            },
+                            "message": {
+                                "$id": "#/properties/productAttributes/properties/marketingMessage/items/properties/message",
+                                "type": "string",
+                                "examples": ["Eine tolle Tasche"]
+                            }
+                        }
+                    }
+                },
+                "descriptionShort": {
+                    "$id": "#/properties/productAttributes/properties/descriptionShort",
+                    "type": "array",
+                    "description": "A free form short length description of the trade item that can be used to identify the trade item at point of sale.",
+                    "examples": [
+                        [
+                            {
+                                "language": "de",
+                                "message": "Eine rote Tasche"
+                            }
+                        ]
+                    ],
+                    "additionalItems": true,
+                    "items": {
+                        "$id": "#/properties/productAttributes/properties/descriptionShort/items",
+                        "type": "object",
+                        "examples": [
+                            {
+                                "message": "An absolute casual hit, the narrowly cut fabric skirt in jogging style.",
+                                "language": "en"
+                            }
+                        ],
+                        "additionalProperties": false,
+                        "required": ["language", "message"],
+                        "properties": {
+                            "language": {
+                                "$id": "#/properties/productAttributes/properties/descriptionShort/items/properties/language",
+                                "type": "string",
+                                "examples": ["de"]
+                            },
+                            "message": {
+                                "$id": "#/properties/productAttributes/properties/descriptionShort/items/properties/message",
+                                "type": "string",
+                                "examples": ["Eine rote Tasche"]
+                            }
+                        }
+                    }
+                },
+                "articleGroupingDesignation": {
+                    "$id": "#/properties/productAttributes/properties/articleGroupingDesignation",
+                    "type": "string",
+                    "description": "E.g. series/program/model designation or use for collection descriptions.",
+                    "examples": ["Herbst Winter Beige Collection"]
+                },
+                "brandName": {
+                    "$id": "#/properties/productAttributes/properties/brandName",
+                    "type": "string",
+                    "maxLength": 70,
+                    "description": "brand Name.",
+                    "examples": ["Fashion Marke"]
+                },
+                "additionalTradeItemDescription": {
+                    "$id": "#/properties/productAttributes/properties/additionalTradeItemDescription",
+                    "type": "array",
+                    "maxLength": 500,
+                    "description": "Additional item description necessary to communicate to the industry to help define the product.",
+                    "examples": [
+                        [
+                            {
+                                "message": "Skirt in jogging style",
+                                "language": "en"
+                            }
+                        ]
+                    ],
+                    "additionalItems": true,
+                    "items": {
+                        "$id": "#/properties/productAttributes/properties/additionalTradeItemDescription/items",
+                        "type": "object",
+                        "examples": [
+                            {
+                                "language": "en",
+                                "message": "Skirt in jogging style"
+                            }
+                        ],
+                        "additionalProperties": false,
+                        "required": ["language", "message"],
+                        "properties": {
+                            "language": {
+                                "$id": "#/properties/productAttributes/properties/additionalTradeItemDescription/items/properties/language",
+                                "type": "string",
+                                "examples": ["en"]
+                            },
+                            "message": {
+                                "$id": "#/properties/productAttributes/properties/additionalTradeItemDescription/items/properties/message",
+                                "type": "string",
+                                "examples": ["Skirt in jogging style"]
+                            }
+                        }
+                    }
+                },
+                "measurementInformationNetContent": {
+                    "$id": "#/properties/productAttributes/properties/measurementInformationNetContent",
+                    "type": "integer",
+                    "description": "The amount of a trade item contained in the package, as claimed on the label (according to the country specific regulation on packagings labelling), in case of a multi-pack the net content of the total trade item. For fixed value trade items use the value on the package to avoid variable fill rate issue that arises with some trade items sold by volume or weight whose actual content may vary slightly from batch to batch. In case of variable quantity trade items indicate the average quantity.",
+                    "maxLength": 15,
+                    "examples": [1.0]
+                },
+                "waterRepellent": {
+                    "$id": "#/properties/productAttributes/properties/waterRepellent",
+                    "type": "boolean",
+                    "description": "Indication of whether product has a finish that resists absorption or penetration of water.",
+                    "examples": [true]
+                },
+                "colour": {
+                    "$id": "#/properties/productAttributes/properties/colour",
+                    "type": "array",
+                    "examples": [
+                        [
+                            {
+                                "colourCode": "780",
+                                "colourName": [
+                                    {
+                                        "language": "en",
+                                        "name": "sunset red"
+                                    }
+                                ]
+                            }
+                        ]
+                    ],
+                    "additionalItems": true,
+                    "items": {
+                        "$id": "#/properties/productAttributes/properties/colour/items",
+                        "type": "object",
+                        "examples": [
+                            {
+                                "colourCode": "780",
+                                "colourName": [
+                                    {
+                                        "language": "en",
+                                        "name": "sunset red"
+                                    }
+                                ]
+                            }
+                        ],
+                        "additionalProperties": false,
+                        "required": ["colourCode", "colourName"],
+                        "properties": {
+                            "colourCode": {
+                                "$id": "#/properties/productAttributes/properties/colour/items/properties/colourCode",
+                                "type": "string",
+                                "description": "A code depicting the colour of an object according to a specific code list. The applied code list is specified as additional information together with the colour code.",
+                                "examples": ["780"]
+                            },
+                            "colourName": {
+                                "$id": "#/properties/productAttributes/properties/colour/items/properties/colourName",
+                                "type": "array",
+                                "examples": [
+                                    [
+                                        {
+                                            "language": "en",
+                                            "name": "sunset red"
+                                        }
+                                    ]
+                                ],
+                                "additionalItems": true,
+                                "items": {
+                                    "$id": "#/properties/productAttributes/properties/colour/items/properties/colourName/items",
+                                    "type": "object",
+                                    "examples": [
+                                        {
+                                            "name": "sunset red",
+                                            "language": "en"
+                                        }
+                                    ],
+                                    "additionalProperties": false,
+                                    "required": ["language", "name"],
+                                    "properties": {
+                                        "language": {
+                                            "$id": "#/properties/productAttributes/properties/colour/items/properties/colourName/items/properties/language",
+                                            "type": "string",
+                                            "pattern": "^[a-zA-Z]{2}$",
+                                            "default": "",
+                                            "examples": ["en"]
+                                        },
+                                        "name": {
+                                            "$id": "#/properties/productAttributes/properties/colour/items/properties/colourName/items/properties/name",
+                                            "type": "string",
+                                            "maxLength": 80,
+                                            "examples": ["sunset red"]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "searchColour": {
+                    "$id": "#/properties/productAttributes/properties/searchColour",
+                    "description": "describes the main colour of the article.",
+                    "examples": [["red", "pink"]],
+                    "additionalItems": true,
+                    "items": {
+                        "$id": "#/properties/productAttributes/properties/searchColour/items",
+                        "type": "string",
+                        "enum": [
+                            "transparent",
+                            "white",
+                            "beige",
+                            "yellow",
+                            "red",
+                            "green",
+                            "blue",
+                            "brown",
+                            "grey",
+                            "black",
+                            "petrol",
+                            "turquoise",
+                            "olive",
+                            "orange",
+                            "pink",
+                            "purple",
+                            "gold",
+                            "silver",
+                            "anthracite",
+                            "colorful"
+                        ],
+                        "examples": ["red", "pink"]
+                    }
+                },
+                "size": {
+                    "$id": "#/properties/productAttributes/properties/size",
+                    "type": "array",
+                    "description": "Apparel and footwear are made in different sizes, and industry-standard names (e.g., size 36, 38, ..., or S, M, L ...) are used for size designation which in apparel are grouped into size ranges (normal, stocky...). However, these standards often vary for garments depending on the country, so a country code must be added to the specification.  In addition, other dimensions (e.g., skirt length, waist size, sleeve length, collar width ...) can be displayed in millimeters or inches, specifying the object (which is to be measured), the unit (millimeters or inches), and the dimension specification. For shoes, specification is typically German sizes or English sizes (in inches, with one decimal place). In addition, further size information can be provided on width (codetable), the sole and heel height and / or leg height for boots.  For bras, the underbust circumference and the cup-size two separate attributes.At the sales unit level, indicate the respective size, which is also noted on the sewing and / or price label. The deliverable sizes of an article can be easily determined by the data recipient through these details and the link with the GMN.Accessories are typically given lengths or lengths and widths (e.g., scarves, shawls, belts) or product specifics (e.g., hats: head circumference - gloves: width) in millimeters or inches..",
+                    "examples": [
+                        [
+                            {
+                                "mainSize": "72",
+                                "subSize": "B",
+                                "country": "de"
+                            }
+                        ]
+                    ],
+                    "additionalItems": true,
+                    "items": {
+                        "$id": "#/properties/productAttributes/properties/size/items",
+                        "type": "object",
+                        "examples": [
+                            {
+                                "mainSize": "72",
+                                "subSize": "B",
+                                "country": "de"
+                            }
+                        ],
+                        "additionalProperties": false,
+                        "required": ["country", "mainSize", "subSize"],
+                        "properties": {
+                            "country": {
+                                "$id": "#/properties/productAttributes/properties/size/items/properties/country",
+                                "type": "string",
+                                "examples": ["de"]
+                            },
+                            "mainSize": {
+                                "$id": "#/properties/productAttributes/properties/size/items/properties/mainSize",
+                                "type": "string",
+                                "examples": ["72"]
+                            },
+                            "subSize": {
+                                "$id": "#/properties/productAttributes/properties/size/items/properties/subSize",
+                                "type": "string",
+                                "examples": ["B"]
+                            }
+                        }
+                    }
+                },
+                "material": {
+                    "$id": "#/properties/productAttributes/properties/material",
+                    "type": "array",
+                    "examples": [
+                        [
+                            {
+                                "composition": [
+                                    {
+                                        "percentageShare": 100.0,
+                                        "typeOfMaterial": "cotton"
+                                    }
+                                ],
+                                "describedObject": "lining"
+                            }
+                        ]
+                    ],
+                    "additionalItems": true,
+                    "items": {
+                        "$id": "#/properties/productAttributes/properties/material/items",
+                        "type": "object",
+                        "examples": [
+                            {
+                                "describedObject": "lining",
+                                "composition": [
+                                    {
+                                        "percentageShare": 100.0,
+                                        "typeOfMaterial": "cotton"
+                                    }
+                                ]
+                            }
+                        ],
+                        "additionalProperties": false,
+                        "required": ["describedObject", "composition"],
+                        "properties": {
+                            "describedObject": {
+                                "$id": "#/properties/productAttributes/properties/material/items/properties/describedObject",
+                                "enume": [
+                                    "outerFabric",
+                                    "lining",
+                                    "padding",
+                                    "collar",
+                                    "pockets",
+                                    "tip",
+                                    "applications",
+                                    "ohters"
+                                ],
+                                "description": "The described object is mapped according to the code table.",
+                                "examples": ["lining"]
+                            },
+                            "composition": {
+                                "$id": "#/properties/productAttributes/properties/material/items/properties/composition",
+                                "type": "array",
+                                "examples": [
+                                    [
+                                        {
+                                            "typeOfMaterial": "cotton",
+                                            "percentageShare": 100.0
+                                        }
+                                    ]
+                                ],
+                                "additionalItems": true,
+                                "items": {
+                                    "$id": "#/properties/productAttributes/properties/material/items/properties/composition/items",
+                                    "type": "object",
+                                    "examples": [
+                                        {
+                                            "percentageShare": 100.0,
+                                            "typeOfMaterial": "cotton"
+                                        }
+                                    ],
+                                    "additionalProperties": false,
+                                    "required": ["typeOfMaterial", "percentageShare"],
+                                    "properties": {
+                                        "typeOfMaterial": {
+                                            "$id": "#/properties/productAttributes/properties/material/items/properties/composition/items/properties/typeOfMaterial",
+                                            "enum": [
+                                                "abaca ",
+                                                "acetate",
+                                                "acrylic",
+                                                "alfa",
+                                                "alginate",
+                                                "alpaca",
+                                                "angora",
+                                                "animal",
+                                                "aramid",
+                                                "asbestos",
+                                                "beaver",
+                                                "broom",
+                                                "camel",
+                                                "cashgora",
+                                                "cashmere",
+                                                "cattlehair",
+                                                "chlorofibre",
+                                                "coir ",
+                                                "commongoathair",
+                                                "cotton",
+                                                "cupro",
+                                                "elastane",
+                                                "elastan",
+                                                "elastodiene",
+                                                "elastolefin",
+                                                "elastomultiester",
+                                                "flax",
+                                                "fluorofibre",
+                                                "glassfibre",
+                                                "guanaco",
+                                                "henequen",
+                                                "horsehair",
+                                                "jute",
+                                                "kapok",
+                                                "leather",
+                                                "linen",
+                                                "llama",
+                                                "lyocell",
+                                                "maguey",
+                                                "manilahemp",
+                                                "melamine",
+                                                "metal",
+                                                "modacrylic",
+                                                "modal",
+                                                "mohair",
+                                                "nylon",
+                                                "organiccotton",
+                                                "otter",
+                                                "paper",
+                                                "polyacrylic",
+                                                "polyamide",
+                                                "polycarbamide",
+                                                "polyurethane",
+                                                "polyurethan",
+                                                "polyester",
+                                                "polyethylene",
+                                                "polyimide",
+                                                "polylactide",
+                                                "protein",
+                                                "ramie",
+                                                "silk",
+                                                "sisal",
+                                                "suede",
+                                                "sunn",
+                                                "tencel",
+                                                "triacetate",
+                                                "trivinyl",
+                                                "truehemp",
+                                                "vicuna",
+                                                "vinylal",
+                                                "virginwool",
+                                                "viscose",
+                                                "wool",
+                                                "yak",
+                                                "other"
+                                            ],
+                                            "examples": ["cotton"]
+                                        },
+                                        "percentageShare": {
+                                            "$id": "#/properties/productAttributes/properties/material/items/properties/composition/items/properties/percentageShare",
+                                            "type": "number",
+                                            "description": "Here, the proportion of the material is shown as a percentage.",
+                                            "examples": [100.0]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "careInstructions": {
+                    "$id": "#/properties/productAttributes/properties/careInstructions",
+                    "type": "object",
+                    "examples": [
+                        {
+                            "ironingCharacteristics": "low",
+                            "washingCharacteristics": "normal30",
+                            "professionalCleaningCharacteristics": "noDry",
+                            "bleachingCharacteristics": "doNotBleach",
+                            "dryingCharacteristics": "lineDrying"
+                        }
+                    ],
+                    "additionalProperties": false,
+                    "required": [
+                        "washingCharacteristics",
+                        "dryingCharacteristics",
+                        "bleachingCharacteristics",
+                        "ironingCharacteristics",
+                        "professionalCleaningCharacteristics"
+                    ],
+                    "properties": {
+                        "washingCharacteristics": {
+                            "$id": "#/properties/productAttributes/properties/careInstructions/properties/washingCharacteristics",
+                            "enum": [
+                                "doNotWash ",
+                                "handWash",
+                                "normalWashingProcess1Until30C",
+                                "normalWashingProcess2Until40C",
+                                "normalWashingProcess3Until50C",
+                                "normalWashingProcess4Until60C",
+                                "normalWashingProcess5Until70C",
+                                "normalWashingProcess6Until95C",
+                                "mildWashingProcess1Until30C",
+                                "mildWashingProcess2Until40C",
+                                "mildWashingProcess3Until50C",
+                                "mildWashingProcess4Until60C",
+                                "veryMildWashingProcess1until30C",
+                                "veryMildWashingProcess2until40C"
+                            ],
+                            "description": "information given according to code list.",
+                            "examples": ["normal30"]
+                        },
+                        "dryingCharacteristics": {
+                            "$id": "#/properties/productAttributes/properties/careInstructions/properties/dryingCharacteristics",
+                            "enum": [
+                                "DoNotTumbleDry",
+                                "MildDryingProcessesLowTemperature80C",
+                                "MildDryingProcessesLowTemperature60C",
+                                "flatDrying",
+                                "flatDripDrying",
+                                "lineDrying",
+                                "lineDripDrying",
+                                "flatDryingInTheShade",
+                                "flatDripDryingInTheShade",
+                                "lineDryingInTheShade",
+                                "linedripDryingInTheShade"
+                            ],
+                            "description": "information given according to code list.",
+                            "examples": ["lineDrying"]
+                        },
+                        "bleachingCharacteristics": {
+                            "$id": "#/properties/productAttributes/properties/careInstructions/properties/bleachingCharacteristics",
+                            "enum": [
+                                "anyBleachingAgentAllowed",
+                                "onlyOxygenBleachAllowed",
+                                "doNotBleach"
+                            ],
+                            "description": "information given according to code list.",
+                            "examples": ["doNotBleach"]
+                        },
+                        "ironingCharacteristics": {
+                            "$id": "#/properties/productAttributes/properties/careInstructions/properties/ironingCharacteristics",
+                            "enum": [
+                                "ironAtLowTemperature",
+                                "ironAtModerateTemperature ",
+                                "hotIron ",
+                                "ironTo200C"
+                            ],
+                            "description": "information given according to code list.",
+                            "examples": ["low"]
+                        },
+                        "professionalCleaningCharacteristics": {
+                            "$id": "#/properties/productAttributes/properties/careInstructions/properties/professionalCleaningCharacteristics",
+                            "enum": ["0", "F", "F1", "P1", "P2", "P3", "W", "W1", "W2", "W3"],
+                            "description": "information given according to code list.",
+                            "examples": ["noDry"]
+                        }
+                    }
+                },
+                "season": {
+                    "enum": [
+                        "allYear",
+                        "autumn",
+                        "autumnWinter",
+                        "spring",
+                        "springSummer",
+                        "summer",
+                        "winter",
+                        "other"
+                    ],
+                    "$id": "#/properties/productAttributes/properties/season",
+                    "type": "string",
+                    "examples": ["springSummer"]
+                },
+                "seasonYear": {
+                    "$id": "#/properties/productAttributes/properties/season",
+                    "type": "number",
+                    "maximum": 9999,
+                    "examples": ["springSummer"]
+                },
+                "isNos": {
+                    "$id": "#/properties/productAttributes/properties/isNos",
+                    "type": "boolean",
+                    "description": "information as to whether Never Out of Stock NOS is included.",
+                    "examples": [true]
+                },
+                "files": {
+                    "$id": "#/properties/productAttributes/properties/files",
+                    "type": "array",
+                    "examples": [
+                        [
+                            {
+                                "uniformResourceIdentifier": "http://....",
+                                "fileEffectiveStartDateTime": "2019-11-02T17:03:08.048Z",
+                                "fileEffectiveEndDateTime": "2020-11-02T17:03:08.048Z",
+                                "referencedFileType": "productImage"
+                            }
+                        ]
+                    ],
+                    "additionalItems": true,
+                    "items": {
+                        "$id": "#/properties/productAttributes/properties/files/items",
+                        "type": "object",
+                        "examples": [
+                            {
+                                "fileEffectiveEndDateTime": "2020-11-02T17:03:08.048Z",
+                                "referencedFileType": "productImage",
+                                "uniformResourceIdentifier": "http://....",
+                                "fileEffectiveStartDateTime": "2019-11-02T17:03:08.048Z"
+                            }
+                        ],
+                        "additionalProperties": false,
+                        "required": [
+                            "referencedFileType",
+                            "uniformResourceIdentifier",
+                            "fileEffectiveStartDateTime",
+                            "fileEffectiveEndDateTime"
+                        ],
+                        "properties": {
+                            "referencedFileType": {
+                                "$id": "#/properties/productAttributes/properties/files/items/properties/referencedFileType",
+                                "enum": [
+                                    "360DegreeImage",
+                                    "audio",
+                                    "certification",
+                                    "energyLabel",
+                                    "logo",
+                                    "marketingInfomation",
+                                    "organicCertificate",
+                                    "productImage",
+                                    "productLabelImage",
+                                    "producatWebsite",
+                                    "qrCode",
+                                    "tradeItemDescription",
+                                    "video",
+                                    "website"
+                                ],
+                                "description": "Code identifying the type or purpose of the information contained in the referenced external file. Example: Image of product or product label, marketing information, Safety Data Sheet, planogram..",
+                                "examples": ["productImage"]
+                            },
+                            "uniformResourceIdentifier": {
+                                "$id": "#/properties/productAttributes/properties/files/items/properties/uniformResourceIdentifier",
+                                "type": "string",
+                                "description": "Simple text string that refers to a resource on the internet; URIs may refer to documents, resources, people, etc.",
+                                "examples": ["http://...."]
+                            },
+                            "fileEffectiveStartDateTime": {
+                                "$id": "#/properties/productAttributes/properties/files/items/properties/fileEffectiveStartDateTime",
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "The date (and time) this image is the current image for this trade item. The date (and time) upon which the target of this external link ceases to be effective for use.",
+                                "examples": ["2020-11-02T17:03:08.048Z"]
+                            },
+                            "fileEffectiveEndDateTime": {
+                                "$id": "#/properties/productAttributes/properties/files/items/properties/fileEffectiveEndDateTime",
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "The date (and time) upon which the target of this external link begins to be effective for use.",
+                                "examples": ["2020-11-02T17:03:08.048Z"]
+                            }
+                        }
+                    }
+                },
+                "countryOfOrigin": {
+                    "$id": "#/properties/productAttributes/properties/countryOfOrigin",
+                    "type": "string",
+                    "pattern": "^[a-zA-Z]{2}$",
+                    "description": "The Code ISO-3166 Alpha-2 country code (codes) in which the goods have been produced or manufactured, according to criteria established for the purposes of application of the value may or may not be presented on the trade item label..",
+                    "examples": ["de"]
+                }
+            }
+        },
+        "additionalData": {
+            "$id": "#/properties/additionalData",
+            "type": "array",
+            "examples": [
+                [
+                    {
+                        "key": "customAttribute1",
+                        "value": "customValue"
+                    }
+                ]
+            ],
+            "additionalItems": false,
+            "items": {
+                "$id": "#/properties/additionalData/items",
+                "type": "object",
+                "examples": [
+                    {
+                        "key": "customAttribute1",
+                        "value": "customValue"
+                    }
+                ],
+                "additionalProperties": false,
+                "required": ["key", "value"],
+                "properties": {
+                    "key": {
+                        "$id": "#/properties/additionalData/items/properties/key",
+                        "type": "string",
+                        "examples": ["customAttribute1"]
+                    },
+                    "value": {
+                        "$id": "#/properties/additionalData/items/properties/value",
+                        "type": "string",
+                        "examples": ["customValue"]
+                    }
+                }
+            }
         }
-      }
-    },
-    "additionalData": {
-      "$id": "#/properties/additionalData",
-      "type": "array",
-      "examples": [
-        [
-          {
-            "key": "customAttribute1",
-            "value": "customValue"
-          }
-        ]
-      ],
-      "additionalItems": false,
-      "items": {
-        "$id": "#/properties/additionalData/items",
-        "type": "object",
-        "examples": [
-          {
-            "key": "customAttribute1",
-            "value": "customValue"
-          }
-        ],
-        "additionalProperties": false,
-        "required": ["key", "value"],
-        "properties": {
-          "key": {
-            "$id": "#/properties/additionalData/items/properties/key",
-            "type": "string",
-            "examples": ["customAttribute1"]
-          },
-          "value": {
-            "$id": "#/properties/additionalData/items/properties/value",
-            "type": "string",
-            "examples": ["customValue"]
-          }
-        }
-      }
     }
-  }
 }
