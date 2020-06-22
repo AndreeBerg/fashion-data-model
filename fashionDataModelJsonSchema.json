@@ -444,7 +444,6 @@
                 "productClassificationValue": {
                     "$id": "#/properties/productAttributes/properties/productClassificationValue",
                     "type": "string",
-                    "enum": ["eclass", "dtb", "fedasPck", "bte", "etim", "other"],
                     "examples": ["121310"]
                 },
                 "productClassificationSystem": {
@@ -927,11 +926,11 @@
                     "type": "object",
                     "examples": [
                         {
-                            "ironingCharacteristics": "low",
-                            "washingCharacteristics": "normal30",
-                            "professionalCleaningCharacteristics": "noDry",
+                            "ironingCharacteristics": "ironAtLowTemperature",
+                            "washingCharacteristics": "normalWashingProcess1Until30C",
+                            "professionalCleaningCharacteristics": "F",
                             "bleachingCharacteristics": "doNotBleach",
-                            "dryingCharacteristics": "lineDrying"
+                            "dryingCharacteristics": "doNotTumbleDry"
                         }
                     ],
                     "additionalProperties": false,
@@ -962,14 +961,14 @@
                                 "veryMildWashingProcess2until40C"
                             ],
                             "description": "information given according to code list.",
-                            "examples": ["normal30"]
+                            "examples": ["normalWashingProcess1Until30C"]
                         },
                         "dryingCharacteristics": {
                             "$id": "#/properties/productAttributes/properties/careInstructions/properties/dryingCharacteristics",
                             "enum": [
-                                "DoNotTumbleDry",
-                                "MildDryingProcessesLowTemperature80C",
-                                "MildDryingProcessesLowTemperature60C",
+                                "doNotTumbleDry",
+                                "mildDryingProcessesLowTemperature80C",
+                                "mildDryingProcessesLowTemperature60C",
                                 "flatDrying",
                                 "flatDripDrying",
                                 "lineDrying",
@@ -980,7 +979,7 @@
                                 "linedripDryingInTheShade"
                             ],
                             "description": "information given according to code list.",
-                            "examples": ["lineDrying"]
+                            "examples": ["doNotTumbleDry"]
                         },
                         "bleachingCharacteristics": {
                             "$id": "#/properties/productAttributes/properties/careInstructions/properties/bleachingCharacteristics",
@@ -1001,13 +1000,13 @@
                                 "ironTo200C"
                             ],
                             "description": "information given according to code list.",
-                            "examples": ["low"]
+                            "examples": ["ironAtLowTemperature"]
                         },
                         "professionalCleaningCharacteristics": {
                             "$id": "#/properties/productAttributes/properties/careInstructions/properties/professionalCleaningCharacteristics",
                             "enum": ["0", "F", "F1", "P1", "P2", "P3", "W", "W1", "W2", "W3"],
                             "description": "information given according to code list.",
-                            "examples": ["noDry"]
+                            "examples": ["F"]
                         }
                     }
                 },

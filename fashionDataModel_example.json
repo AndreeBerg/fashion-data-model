@@ -1,124 +1,124 @@
 {
-  "logistics": {
-    "isTradeItemADespatchUnit": true,
-    "importClassificationSystem": "customsTariffNumber",
-    "importClassificationValue": "A2000SD",
-    "consumerFirstAvailabilityDateTime": "2020-11-02T17:03:08.048Z",
-    "packagingType": "box",
-    "grossWeightInGram": 150,
-    "measurements": {
-      "widthInMm": 20,
-      "heightInMm": 25,
-      "depthInMm": 2
-    }
-  },
-  "productMetaData": {
-    "globalModelNumber": "471323123",
-    "manufacturerGLN": "4004757000005",
-    "brandOwnerGln": "4004757000005",
-    "gtin": "4043874021975",
-    "articleNumber": "210-9873232",
-    "isTradeItemBaseUnit": true,
-    "unitDescriptorCode": "baseUnitOrEach",
-    "packagingMarkedLabelAccreditationCode": "OKOTEST",
-    "informationProviderGln": "4004757000005",
-    "targetMarketCountryCode": "de",
-    "effectiveDateTime": "2019-11-02T17:03:08.048Z",
-    "startAvailabilityDateTime": "2019-11-02T17:03:08.048Z",
-    "endAvailabilityDateTime": "2019-11-02T17:03:08.048Z",
-    "isTradeItemAnOrderableUnit": true,
-    "suggestedRetailPrice": [
-      {
-        "country": "de",
-        "price": 14.99,
-        "currency": "EUR"
-      }
-    ],
-    "isTradeItemAConsumerUnit": true,
-    "quantityOfChildren": 0,
-    "totalQuantityOfNextLowerLevelTradeItems": 0,
-    "childTradeItemGtin": [],
-    "numberOfTheNextLowerArticleUnit": null
-  },
-  "productAttributes": {
-    "productClassificationValue": "121310",
-    "productClassificationSystem": "bte",
-    "marketingMessage": [
-      {
-        "language": "en",
-        "message": "An absolute casual hit, the narrowly cut fabric skirt in jogging style.  The stretchy material composition of the short tubular skirt, made of 65% viscose, 30% nylon and 5% elastane, guarantees a great and comfortable fit. The partially elastic waistband with drawstring and cord as well as piped pockets on the seat and side pockets give the skirt an elegant, sporty appearance. The styling combinations are endless: whether with a simple blouse and heels or a casual sweater and sandals, the skirt transforms every outfit into a skilful eye-catcher."
-      }
-    ],
-    "descriptionShort": [
-      {
-        "language": "en",
-        "message": "An absolute casual hit, the narrowly cut fabric skirt in jogging style."
-      }
-    ],
-    "articleGroupingDesignation": "Fall Winter Beige Collection",
-    "brandName": "Fashion Brand Name",
-    "additionalTradeItemDescription": [
-      {
-        "language": "en",
-        "message": "Skirt in jogging style"
-      }
-    ],
-    "measurementInformationNetContent": 1,
-    "waterRepellent": true,
-    "colour": [
-      {
-        "colourCode": "780",
-        "colourName": [
-          {
-            "language": "en",
-            "name": "sunset red"
-          }
-        ]
-      }
-    ],
-    "searchColour": ["red", "pink"],
-    "size": [
-      {
-        "country": "de",
-        "mainSize": "72",
-        "subSize": "B"
-      }
-    ],
-    "material": [
-      {
-        "describedObject": "upperMaterial",
-        "composition": [
-          {
-            "typeOfMaterial": "cotton",
-            "percentageShare": 100
-          }
-        ]
-      }
-    ],
-    "careInstructions": {
-      "washingCharacteristics": "normal30",
-      "dryingCharacteristics": "lineDrying",
-      "bleachingCharacteristics": "doNotBleach",
-      "ironingCharacteristics": "low",
-      "professionalCleaningCharacteristics": "noDry"
+    "logistics": {
+        "isTradeItemADespatchUnit": true,
+        "importClassificationSystem": "customsTariffNumber",
+        "importClassificationValue": "A2000SD",
+        "consumerFirstAvailabilityDateTime": "2020-11-02T17:03:08.048Z",
+        "packagingType": "box",
+        "grossWeightInGram": 150,
+        "measurements": {
+            "widthInMm": 20,
+            "heightInMm": 25,
+            "depthInMm": 2
+        }
     },
-    "season": "springSummer",
-    "seasonYear": 2019,
-    "isNos": true,
-    "files": [
-      {
-        "referencedFileType": "productImage",
-        "uniformResourceIdentifier": "http://....",
-        "fileEffectiveStartDateTime": "2019-11-02T17:03:08.048Z",
-        "fileEffectiveEndDateTime": "2020-11-02T17:03:08.048Z"
-      }
-    ],
-    "countryOfOrigin": "de"
-  },
-  "additionalData": [
-    {
-      "key": "customAttribute1",
-      "value": "customValue"
-    }
-  ]
+    "productMetaData": {
+        "globalModelNumber": "471323123",
+        "manufacturerGLN": "4004757000005",
+        "brandOwnerGln": "4004757000005",
+        "gtin": "4043874021975",
+        "articleNumber": "210-9873232",
+        "isTradeItemBaseUnit": true,
+        "unitDescriptorCode": "baseUnitOrEach",
+        "packagingMarkedLabelAccreditationCode": "OKOTEST",
+        "informationProviderGln": "4004757000005",
+        "targetMarketCountryCode": "de",
+        "effectiveDateTime": "2019-11-02T17:03:08.048Z",
+        "startAvailabilityDateTime": "2019-11-02T17:03:08.048Z",
+        "endAvailabilityDateTime": "2019-11-02T17:03:08.048Z",
+        "isTradeItemAnOrderableUnit": true,
+        "suggestedRetailPrice": [
+            {
+                "country": "de",
+                "price": 14.99,
+                "currency": "EUR"
+            }
+        ],
+        "isTradeItemAConsumerUnit": true,
+        "quantityOfChildren": 0,
+        "totalQuantityOfNextLowerLevelTradeItems": 0,
+        "childTradeItemGtin": [],
+        "numberOfTheNextLowerArticleUnit": null
+    },
+    "productAttributes": {
+        "productClassificationValue": "121310",
+        "productClassificationSystem": "bte",
+        "marketingMessage": [
+            {
+                "language": "en",
+                "message": "An absolute casual hit, the narrowly cut fabric skirt in jogging style.  The stretchy material composition of the short tubular skirt, made of 65% viscose, 30% nylon and 5% elastane, guarantees a great and comfortable fit. The partially elastic waistband with drawstring and cord as well as piped pockets on the seat and side pockets give the skirt an elegant, sporty appearance. The styling combinations are endless: whether with a simple blouse and heels or a casual sweater and sandals, the skirt transforms every outfit into a skilful eye-catcher."
+            }
+        ],
+        "descriptionShort": [
+            {
+                "language": "en",
+                "message": "An absolute casual hit, the narrowly cut fabric skirt in jogging style."
+            }
+        ],
+        "articleGroupingDesignation": "Fall Winter Beige Collection",
+        "brandName": "Fashion Brand Name",
+        "additionalTradeItemDescription": [
+            {
+                "language": "en",
+                "message": "Skirt in jogging style"
+            }
+        ],
+        "measurementInformationNetContent": 1,
+        "waterRepellent": true,
+        "colour": [
+            {
+                "colourCode": "780",
+                "colourName": [
+                    {
+                        "language": "en",
+                        "name": "sunset red"
+                    }
+                ]
+            }
+        ],
+        "searchColour": ["red", "pink"],
+        "size": [
+            {
+                "country": "de",
+                "mainSize": "72",
+                "subSize": "B"
+            }
+        ],
+        "material": [
+            {
+                "describedObject": "upperMaterial",
+                "composition": [
+                    {
+                        "typeOfMaterial": "cotton",
+                        "percentageShare": 100
+                    }
+                ]
+            }
+        ],
+        "careInstructions": {
+            "washingCharacteristics": "normalWashingProcess1Until30C",
+            "dryingCharacteristics": "lineDrying",
+            "bleachingCharacteristics": "doNotBleach",
+            "ironingCharacteristics": "ironAtLowTemperature",
+            "professionalCleaningCharacteristics": "F"
+        },
+        "season": "springSummer",
+        "seasonYear": 2019,
+        "isNos": true,
+        "files": [
+            {
+                "referencedFileType": "productImage",
+                "uniformResourceIdentifier": "http://....",
+                "fileEffectiveStartDateTime": "2019-11-02T17:03:08.048Z",
+                "fileEffectiveEndDateTime": "2020-11-02T17:03:08.048Z"
+            }
+        ],
+        "countryOfOrigin": "de"
+    },
+    "additionalData": [
+        {
+            "key": "customAttribute1",
+            "value": "customValue"
+        }
+    ]
 }
