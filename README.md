@@ -9,9 +9,10 @@ Der Fokus wurde auf eine einfache Verwendung und Implementierung gelegt, ebenso 
 
 # Inhalt
 
--   Datenmodellbeschreibung in Google Sheets
--   JSON Schema zur Validierung von JSON Nachrichten
--   JSON Beispiel Datensatz
+-   [Datenmodellbeschreibung als Excel](https://github.com/boernard/fashion-data-model/raw/master/Fashion%20data%20model_AT_DE_CH_V1_Pilot.xlsx)
+-   [JSON Schema zur Validierung von JSON Nachrichten](https://raw.githubusercontent.com/boernard/fashion-data-model/master/fashionDataModelJsonSchema.json)
+-   [JSON Beispiel Datensatz](https://raw.githubusercontent.com/boernard/fashion-data-model/master/fashionDataModel_example.json)
+-   [Update fashion data model im Pilotprojekt](https://github.com/boernard/fashion-data-model/raw/master/Update%20fashion%20data%20model%20im%20Pilotprojekt.pdf)
 
 Das vorliegende Syntax neutrale Excel Pilot Datenmodell ist in Zusammenarbeit mit den Unternehmen Ahlers Group, Hagemeyer, Zalando, KATAG, Falke und Fashion Cloud erstellt worden.
 
