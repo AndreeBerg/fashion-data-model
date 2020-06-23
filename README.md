@@ -35,3 +35,8 @@ Da die Fashion Branche technologisch unabhängig sein möchte, haben wir versuch
 -   Eine Beschreibung des Aufbaus der JSON Blaupause als Schema und eine Dokumentation wie daraus eine api Schnittstellenbeschreibung erstellt werden kann
 
 -   Eine Dokumentation wie für diese 59 Attribute ebenfalls eine XML API Schnittstellenbeschreibung erstellt werden kann
+
+### XML Schema Definiton
+
+Das JSON Schema hilft bei der Erstellung von validen JSON Dokumenten im Fashion Data Model. Die Generierung eines XML Schemas (=XSD, XML Schema Definition) ist mit Hilfe von online Tools wie bspw. https://www.freeformatter.com/json-to-xml-converter.html mit geringem Aufwand möglich.
+Hierfür würde man zunächst die JSON Beispiel-Datei online in XML konvertieren. Anschließend kann man aus dem XML eine XSD generieren, die dann mit den gültigen Wertebereichen aus dem JSON Schema befüllt werden muss.
